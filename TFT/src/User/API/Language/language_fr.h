@@ -37,6 +37,7 @@
     #define STRING_TOUCH_SOUND            "Son des touches"
     #define STRING_TOAST_SOUND            "Notifications"
     #define STRING_ALERT_SOUND            "Popups et alertes"
+    #define STRING_HEATER_SOUND           "Notification de chauffe"
     #define STRING_KNOB_LED_COLOR         "LED du bouton rotatif"
     #define STRING_KNOB_LED_IDLE          "Veille du bouton rotatif"
     #define STRING_LCD_BRIGHTNESS         "Luminosité LCD"
@@ -150,7 +151,7 @@
     #define STRING_TIMEOUT_REACHED        "Délai d'attente dépassé !"
     #define STRING_DISCONNECT_INFO        "Vous pouvez maintenant contrôler\nl'imprimante depuis votre ordinateur !"
     #define STRING_SHUTTING_DOWN          "Extinction en cours..."
-    #define STRING_WAIT_TEMP_SHUT_DOWN    "Attendez que la température de la buse\nsoit inférieure à %d℃" // Wait for the temperature of hotend to be lower than 50℃
+    #define STRING_WAIT_TEMP_SHUT_DOWN    "Attendez que la température de la buse\nsoit inférieure à %d℃"
     #define STRING_POWER_FAILED           "Continuer l'impression ?"
     #define STRING_PROCESS_RUNNING        "Processus en cours ! Veuillez patienter"
     #define STRING_PROCESS_COMPLETED      "Processus terminé !"
