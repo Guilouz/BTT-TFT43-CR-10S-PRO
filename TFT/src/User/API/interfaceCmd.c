@@ -481,7 +481,7 @@ void sendQueueCmd(void)
               }
             }
             break;
-          
+
           case 524: //M524
             if (!fromTFT && isPrinting() && !infoHost.printing)
             {
