@@ -92,6 +92,18 @@ static float ack_second_value()
   }
 }
 
+void ack_values_sum(float *data)
+{
+  while (((dmaL2Cache[ack_index] < '0') || (dmaL2Cache[ack_index] > '9')) && dmaL2Cache[ack_index] != '\n')
+    ack_index++;
+  *data += ack_value();
+  while ((((dmaL2Cache[ack_index] >= '0') && (dmaL2Cache[ack_index] <= '9')) || 
+          (dmaL2Cache[ack_index] == '.'))  && (dmaL2Cache[ack_index] != '\n'))
+    ack_index++;
+  if (dmaL2Cache[ack_index] != '\n')
+    ack_values_sum(data);
+}
+
 void ackPopupInfo(const char *info)
 {
   bool show_dialog = true;
@@ -216,6 +228,7 @@ void hostActionCommands(void)
     else if (ack_seen("Reheating"))
     {
       hostAction.prompt_show = 0;
+      Serial_Puts(SERIAL_PORT, "M876 S0\n");  // auto-respond to a prompt request that is not shown on the TFT
     }
     else if (ack_seen("Nozzle Parked"))
     {
@@ -654,6 +667,11 @@ void parseACK(void)
                            setParameter(P_CURRENT, X_STEPPER, ack_value());
         if (ack_seen("Y")) setParameter(P_CURRENT, Y_STEPPER, ack_value());
         if (ack_seen("Z")) setParameter(P_CURRENT, Z_STEPPER, ack_value());
+        setParameter(P_STEALTH_CHOP, X_STEPPER, 0 );  //Sets 0 if StealthChop is off on all axes and the M569 string does not occur.
+        setParameter(P_STEALTH_CHOP, Y_STEPPER, 0 );  //Sets 0 if StealthChop is off 
+        setParameter(P_STEALTH_CHOP, Z_STEPPER, 0 );  //Sets 0 if StealthChop is off 
+        setParameter(P_STEALTH_CHOP, E_STEPPER, 0 );  //Sets 0 if StealthChop is off 
+        setParameter(P_STEALTH_CHOP, E2_STEPPER, 0 ); //Sets 0 if StealthChop is off 
       }
       else if (ack_seen("M906 I1"))
       {
@@ -694,6 +712,22 @@ void parseACK(void)
         setParameter(P_HYBRID_THRESHOLD, E2_STEPPER, ack_value());
         setDualStepperStatus(E_STEPPER, true);
       }
+    // parse and store TMC Stealth Chop
+      else if (ack_seen("M569 S1") && !ack_seen("T") ) 
+      {
+        setParameter(P_STEALTH_CHOP, X_STEPPER, ack_seen("X") ? 1 : 0);
+        setParameter(P_STEALTH_CHOP, Y_STEPPER, ack_seen("Y") ? 1 : 0);
+        setParameter(P_STEALTH_CHOP, Z_STEPPER, ack_seen("Z") ? 1 : 0);
+        setParameter(P_STEALTH_CHOP, E_STEPPER, ack_seen("E") ? 1 : 0);
+      }
+      else if (ack_seen("M569 S1 T0"))  
+      {
+        setParameter(P_STEALTH_CHOP, E_STEPPER, 1 );
+      }
+      else if (ack_seen("M569 S1 T1"))  
+      {
+       setParameter(P_STEALTH_CHOP, E2_STEPPER, 1 );
+      }  
     // parse and store ABL type if auto-detect is enabled
     #if ENABLE_BL_VALUE == 1
       else if (ack_seen("Auto Bed Leveling"))
@@ -1011,21 +1045,15 @@ void parseACK(void)
       {
         if (ack_seen("L:"))
         {
-          while (((dmaL2Cache[ack_index] < '0') || (dmaL2Cache[ack_index] > '9')) && dmaL2Cache[ack_index] != '\n')
-            ack_index++;
-          infoPrintSummary.length = ack_value();
+          ack_values_sum(&infoPrintSummary.length);
         }
         else if (ack_seen("W:"))
         {
-          while (((dmaL2Cache[ack_index] < '0') || (dmaL2Cache[ack_index] > '9')) && dmaL2Cache[ack_index] != '\n')
-            ack_index++;
-          infoPrintSummary.weight = ack_value();
+          ack_values_sum(&infoPrintSummary.weight);
         }
         else if (ack_seen("C:"))
         {
-          while (((dmaL2Cache[ack_index] < '0') || (dmaL2Cache[ack_index] > '9')) && dmaL2Cache[ack_index] != '\n')
-            ack_index++;
-          infoPrintSummary.cost = ack_value();
+          ack_values_sum(&infoPrintSummary.cost);
         }
         hasFilamentData = true;
       }
