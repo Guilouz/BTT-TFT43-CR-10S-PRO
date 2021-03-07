@@ -9,7 +9,7 @@ static inline void meshInitPoint(uint16_t col, uint16_t row, float value)
 //  probeHeightEnable();                                     // temporary disable software endstops
 
   // Z offset gcode sequence start
-  if (infoMachineSettings.zProbe == ENABLED)
+  if (infoMachineSettings.zProbe == ENABLED && !(IS_DELTA))
     probeHeightStop();                                     // raise nozzle
 
   mustStoreCmd("G42 I%d J%d\n", col, row);                 // move nozzle to X and Y coordinates corresponding
@@ -59,15 +59,17 @@ float menuMeshTuner(uint16_t col, uint16_t row, float value)
   MENUITEMS meshItems = {
     // title
     LABEL_MESH_TUNER,
-    // icon                         label
-    {{ICON_DEC,                     LABEL_DEC},
-     {ICON_BACKGROUND,              LABEL_BACKGROUND},
-     {ICON_BACKGROUND,              LABEL_BACKGROUND},
-     {ICON_INC,                     LABEL_INC},
-     {ICON_001_MM,                  LABEL_001_MM},
-     {ICON_RESET_VALUE,             LABEL_RESET},
-     {ICON_APPLY,                   LABEL_CONFIRM},
-     {ICON_STOP,                    LABEL_CANCEL},}
+    // icon                          label
+    {
+      {ICON_DEC,                     LABEL_DEC},
+      {ICON_BACKGROUND,              LABEL_BACKGROUND},
+      {ICON_BACKGROUND,              LABEL_BACKGROUND},
+      {ICON_INC,                     LABEL_INC},
+      {ICON_001_MM,                  LABEL_001_MM},
+      {ICON_RESET_VALUE,             LABEL_RESET},
+      {ICON_APPLY,                   LABEL_CONFIRM},
+      {ICON_STOP,                    LABEL_CANCEL},
+    }
   };
 
   #ifdef FRIENDLY_Z_OFFSET_LANGUAGE

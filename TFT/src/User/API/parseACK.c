@@ -97,7 +97,7 @@ void ack_values_sum(float *data)
   while (((dmaL2Cache[ack_index] < '0') || (dmaL2Cache[ack_index] > '9')) && dmaL2Cache[ack_index] != '\n')
     ack_index++;
   *data += ack_value();
-  while ((((dmaL2Cache[ack_index] >= '0') && (dmaL2Cache[ack_index] <= '9')) || 
+  while ((((dmaL2Cache[ack_index] >= '0') && (dmaL2Cache[ack_index] <= '9')) ||
           (dmaL2Cache[ack_index] == '.'))  && (dmaL2Cache[ack_index] != '\n'))
     ack_index++;
   if (dmaL2Cache[ack_index] != '\n')
@@ -504,7 +504,7 @@ void parseACK(void)
         infoFile.source = BOARD_SD_REMOTE;
         initPrintSummary();
         infoMenu.cur = 1;  // take care if popup active or user in other menu than print
-        infoMenu.menu[infoMenu.cur] = menuPrinting;
+        infoMenu.menu[infoMenu.cur] = menuPrinting;  // switch to printing menu and make it next in line after mainscreen
 
         if (infoMachineSettings.autoReportSDStatus == 1)
         {
