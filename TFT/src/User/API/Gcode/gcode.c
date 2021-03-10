@@ -4,11 +4,11 @@
 REQUEST_COMMAND_INFO requestCommandInfo = {0};
 
 static void resetRequestCommandInfo(
-  const char *string_start,  // The magic to identify the start
-  const char *string_stop,   // The magic to identify the stop
-  const char *string_error0, // The first magic to identify the error response
-  const char *string_error1, // The second error magic
-  const char *string_error2  // The third error magic
+  const char *string_start,   // The magic to identify the start
+  const char *string_stop,    // The magic to identify the stop
+  const char *string_error0,  // The first magic to identify the error response
+  const char *string_error1,  // The second error magic
+  const char *string_error2   // The third error magic
 )
 {
   requestCommandInfo.cmd_rev_buf = malloc(CMD_MAX_REV);
@@ -29,7 +29,7 @@ static void resetRequestCommandInfo(
 
   while (infoCmd.count || infoHost.wait)
   {
-    loopProcess(); // Wait for the communication to be clean before requestCommand
+    loopProcess();  // Wait for the communication to be clean before requestCommand
   }
 
   requestCommandInfo.inWaitResponse = true;
@@ -50,12 +50,10 @@ void clearRequestCommandInfo(void)
 
 /*
     Send M21 command and wait for response
-
     >>> M21
     SENDING:M21
     echo:SD card ok
     echo:No SD card
-
 */
 bool request_M21(void)
 {
@@ -91,7 +89,7 @@ char *request_M20(void)
   {
     loopProcess();
   }
-  //clearRequestCommandInfo(); //shall be call after copying the buffer ...
+  //clearRequestCommandInfo();  //shall be call after copying the buffer ...
   return requestCommandInfo.cmd_rev_buf;
 }
 
@@ -109,7 +107,10 @@ char *request_M33(char *filename)
                           NULL,                  // The second error magic
                           NULL);                 // The third error magic
 
-  mustStoreCmd("M33 %s\n", filename);
+  if (filename[0] != '/')
+    mustStoreCmd("M33 /%s\n", filename); // append '/' to short file path
+  else
+    mustStoreCmd("M33 %s\n", filename);
 
   // Wait for response
   while (!requestCommandInfo.done)
@@ -137,7 +138,7 @@ long request_M23_M36(char *filename)
 {
   uint8_t offset = 5;
   const char *sizeTag;
-  if (infoMachineSettings.firmwareType != FW_REPRAPFW) // all other firmwares except reprap firmware
+  if (infoMachineSettings.firmwareType != FW_REPRAPFW)  // all other firmwares except reprap firmware
   {
     resetRequestCommandInfo("File opened",    // The magic to identify the start
                             "File selected",  // The magic to identify the stop
@@ -158,7 +159,7 @@ long request_M23_M36(char *filename)
 
     mustStoreCmd("M36 %s\n", filename);
     offset = 6;
-    sizeTag = "size\":"; // reprap firmware reports size JSON 
+    sizeTag = "size\":";  // reprap firmware reports size JSON
   }
 
   // Wait for response
@@ -169,7 +170,7 @@ long request_M23_M36(char *filename)
     return 0;
   }
   if (infoMachineSettings.firmwareType == FW_REPRAPFW)
-    mustStoreCmd("M23 %s\n", filename); //send M23 for reprap firmware
+    mustStoreCmd("M23 %s\n", filename);  //send M23 for reprap firmware
   // Find file size and report its.
   char *ptr;
   long size = strtol(strstr(requestCommandInfo.cmd_rev_buf, sizeTag) + offset, &ptr, 10);

@@ -195,8 +195,8 @@
 #define Z_MAX_POS 400
 
 // Is this a Delta printer
-#define IS_DELTA             false
-#define DELTA_MBL_Z_DROP_MM  50 // MBL Drop 50mm first after home avoid crashing into the top of the towers.
+#define IS_DELTA            false
+#define DELTA_MBL_Z_DROP_MM 50.0f  // MBL Drop 50mm first after home avoid crashing into the top of the towers.
 
 // Pause Settings
 #define NOZZLE_PAUSE_RETRACT_LENGTH               15  // (mm)
@@ -299,7 +299,7 @@
  * PrusaSlicer can add M601 on certain height.
  * Acts here like manual pause.
  */
-#define NOZZLE_PAUSE_M600_M601
+//#define NOZZLE_PAUSE_M600_M601
 
 /**
  * M701, M702 ; Marlin filament load unload gcodes support
