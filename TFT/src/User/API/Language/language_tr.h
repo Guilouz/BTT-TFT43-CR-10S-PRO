@@ -10,6 +10,7 @@
     #define STRING_PERSISTENT_INFO        "Kalıcı Durum Mesajı"
     #define STRING_FILE_LIST_MODE         "Liste Görünümü"
     #define STRING_ACK_NOTIFICATION       "Onay mesajı stili"
+    #define STRING_EMULATE_M600           "Emulate M600"
     #define STRING_SERIAL_ALWAYS_ON       "Seri Bağ. Sürekli Açık"
     #define STRING_MARLIN_SHOW_TITLE      "Marlin Modu Başlık Desteği"
     #define STRING_MARLIN_FULLSCREEN      "Tam Ekran Marlin Modu"
@@ -344,5 +345,6 @@
     #define STRING_EXT_TEMPLOW            "Ekstruder sıcaklığı minimum\nsıcaklığın altında (%d℃)."
     #define STRING_HEAT_HOTEND            "Ekstruderi %d℃ ye ısıt?"
     #define STRING_Z_ALIGN                "Z Hizala"
+    #define STRING_MACROS                 "Macros"
 
 #endif

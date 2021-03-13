@@ -10,6 +10,7 @@
     #define STRING_PERSISTENT_INFO        "顶部温度信息"
     #define STRING_FILE_LIST_MODE         "文件浏览列表模式"
     #define STRING_ACK_NOTIFICATION       "ACK 弹窗类型"
+    #define STRING_EMULATE_M600           "Emulate M600"
     #define STRING_SERIAL_ALWAYS_ON       "串口常开"
     #define STRING_MARLIN_SHOW_TITLE      "Marlin模式显示标题"
     #define STRING_MARLIN_FULLSCREEN      "全屏显示Marlin模式"
@@ -344,5 +345,6 @@
     #define STRING_EXT_TEMPLOW            "喷头温度低于最小挤出问题 (%d℃)."
     #define STRING_HEAT_HOTEND            "加热喷头到%d℃?"
     #define STRING_Z_ALIGN                "Z Align"
+    #define STRING_MACROS                 "Macros"
 
 #endif
