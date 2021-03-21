@@ -61,13 +61,13 @@
     #define STRING_RETRACT_ACCELERATION   "Rétraction"
     #define STRING_TRAVEL_ACCELERATION    "Déplacements"
     #define STRING_RETRACT_LENGTH         "Longueur"
-    #define STRING_RETRACT_SWAP_LENGTH    "Longueur de swap"
+    #define STRING_RETRACT_SWAP_LENGTH    "Longueur de retrait"
     #define STRING_RETRACT_FEEDRATE       "Vitesse"
     #define STRING_RETRACT_Z_LIFT         "Décalage en Z"
     #define STRING_RECOVER_LENGTH         "Longueur"
-    #define STRING_SWAP_RECOVER_LENGTH    "Longueur de swap"
+    #define STRING_SWAP_RECOVER_LENGTH    "Longueur de retrait"
     #define STRING_RECOVER_FEEDRATE       "Vitesse"
-    #define STRING_SWAP_RECOVER_FEEDRATE  "Vitesse de swap"
+    #define STRING_SWAP_RECOVER_FEEDRATE  "Vitesse de retrait"
     #define STRING_MBL_OFFSET             "Offset MBL"
 
     // Save / Load
@@ -273,6 +273,7 @@
     #define STRING_ABL_SLOT3              "Slot 3"
     #define STRING_ABL_SLOT_EEPROM        "Se souvenir de l'emplacement\nau prochain redémarrage ?\n(Sauvegarde EEPROM)"
     #define STRING_ABL_Z                  "Z Fade"
+    #define STRING_LEVELCORNER            "L Corner"
     #define STRING_P_OFFSET               "Z Offset"
     #define STRING_H_OFFSET               "H Offset"
     #define STRING_DISTANCE               "Distance"
@@ -346,5 +347,6 @@
     #define STRING_HEAT_HOTEND            "Chauffer la buse à %d℃ ?"
     #define STRING_Z_ALIGN                "Z Align"
     #define STRING_MACROS                 "Macros"
+    #define STRING_MESH_VALID             "Test Mesh"
 
 #endif
