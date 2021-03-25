@@ -7,11 +7,11 @@ const MENUITEMS levelcornerItems = {
   // icon                      label
   {
     {ICON_POINT_4,             LABEL_BACKGROUND},
-    {ICON_RESUME,         LABEL_START},
+    {ICON_RESUME,              LABEL_START},
     {ICON_POINT_3,             LABEL_BACKGROUND},
     {ICON_LEVEL_EDGE_DISTANCE, LABEL_DISTANCE},
     {ICON_POINT_1,             LABEL_BACKGROUND},
-    {ICON_BLTOUCH,          LABEL_BACKGROUND},
+    {ICON_BLTOUCH,             LABEL_BACKGROUND},
     {ICON_POINT_2,             LABEL_BACKGROUND},
     {ICON_BACK,                LABEL_BACK},
   }
@@ -33,7 +33,7 @@ void ScanLevelCorner(u8 pointer)
   {
     mustStoreCmd("M401\n");
     mustStoreCmd("G30 E0 X%d Y%d\n", (s16)pointPosition[pointer][0], (s16)pointPosition[pointer][1]);
-    mustStoreCmd("G1 Z10\n");
+	mustStoreCmd("G1 Z10\n");
   }
   else
   {
@@ -62,7 +62,7 @@ void refreshLevelCornerValue(MENUITEMS levelItems)
     {
       valPos = (int)GetLevelCornerPosition(0);
       valPosSub = (int)GetLevelCornerPosition(0)-1;
-      sprintf(tempstr, "  %1.4f  ", GetLevelCornerPosition(valPos));
+      sprintf(tempstr, "%1.4f", GetLevelCornerPosition(valPos));
       lvIcon.lines[valPosSub].text = (uint8_t *)tempstr;
       showLevelCornerLiveInfo(valIndex[valPosSub], valPosSub, &lvIcon, &levelItems.items[valIndex[valPosSub]]);
       SetLevelCornerPosition(0, 0);
@@ -79,7 +79,7 @@ void refreshProbeAccuracy(MENUITEMS levelItems)
   if ((int)GetLevelCornerPosition(0) == 5)
   {
     lvIcon.lines[4].pos = ss_val_point;
-    sprintf(tempstr, "  %1.4f  ", GetLevelCornerPosition(5));
+    sprintf(tempstr, "%1.4f", GetLevelCornerPosition(5));
     lvIcon.lines[4].text = (uint8_t *)tempstr;
     showLevelCornerLiveInfo(5, 4, &lvIcon, &levelItems.items[5]);
     lvIconM48.lines[0].pos = ss_val_point;
@@ -164,7 +164,7 @@ void menuLevelCorner(void)
       default:
         break;
     }
-    
+
     while (ReadValuestored != 0)
     {
       SetLevelCornerPosition(0, ReadValuestored--);

@@ -623,16 +623,9 @@ void showLiveInfo(uint8_t index, const LIVE_INFO * liveicon, const ITEM * item)
 //Show live info text on icons for LevelCorner
 void showLevelCornerLiveInfo(uint8_t index, uint8_t Levelindex, const LIVE_INFO * liveicon, const ITEM * item)
 {
+  const GUI_RECT *rect = curRect + ITEM_PER_PAGE + index;
   if (item != NULL) menuDrawIconOnly(item,index);
-  GUI_SetColor(SSICON_NAME_COLOR);
-  GUI_SetBkColor(0);
-  GUI_SetTextMode(GUI_TEXTMODE_NORMAL);  
-  GUI_POINT loc;
-  loc.x = liveicon->lines[Levelindex].pos.x + curRect[index].x0;
-  loc.y = liveicon->lines[Levelindex].pos.y + curRect[index].y0 + BYTE_HEIGHT;
-  setLargeFont(VAL_LARGE_FONT);
-  GUI_DispStringCenter(loc.x, loc.y, liveicon->lines[Levelindex].text);
-  GUI_RestoreColorDefault();
+  GUI_DispStringInPrect(rect, liveicon->lines[Levelindex].text);
 } //showLevelCornerLiveInfo
 
 //Show text on icons (used in LevelCorner with ICON_BLTOUCH unified)
@@ -647,7 +640,7 @@ void showTextOnIcon(uint8_t index, uint8_t Levelindex, const LIVE_INFO * liveico
   setLargeFont(VAL_LARGE_FONT);
   GUI_DispStringCenter(loc.x, loc.y, liveicon->lines[Levelindex].text);
   GUI_SetColor(WHITE);
-  GUI_DispStringCenter(loc.x -2, loc.y -2, liveicon->lines[Levelindex].text);
+  GUI_DispStringCenter(loc.x - 2, loc.y - 2, liveicon->lines[Levelindex].text);
   GUI_RestoreColorDefault();
 } //showTextOnIcon
 
@@ -748,7 +741,7 @@ GUI_POINT getIconStartPoint(int index)
 }
 
 #ifdef SMART_HOME
-  #define LONG_TOUCH (LCD_CHANGE_MODE_INTERVALS / 3)
+  #define LONG_TOUCH (LCD_CHANGE_MODE_INTERVALS / 3)  // keep it lower than LCD_CHANGE_MODE_INTERVALS
   void loopCheckBack(void)
   {
     static bool longPress = false;
@@ -773,14 +766,14 @@ GUI_POINT getIconStartPoint(int index)
       return;
     if ((infoMenu.cur == 0) || (infoMenu.menu[infoMenu.cur] == menuMode))
       return;
+    #ifdef HAS_EMULATOR
     if (backHeld == true)  // prevent mode selection or screenshot if Back button is held
     {
-      #ifdef HAS_EMULATOR
       backHeld = LCD_ReadPen(0);
       return;
     }
     #endif
-
+ 
     if (longPress == false)  // check if longpress already handled
     {
       if (LCD_ReadPen(LONG_TOUCH))  // check if TSC is pressed and held
@@ -798,7 +791,7 @@ GUI_POINT getIconStartPoint(int index)
         }
         touchSound = true;
 
-      if (tempKey != KEY_IDLE)
+        if (tempKey != KEY_IDLE)
         {
           if (curMenuItems->items[tempKey].label.index != LABEL_BACK)  // check if Back button is held
           {
