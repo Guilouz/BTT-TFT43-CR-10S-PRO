@@ -216,7 +216,7 @@
  * Manual Leveling
  * Move to four corner points to Leveling manually (Point 1, Point 2, Point 3, Point 4).
  */
-#define LEVELING_EDGE_DISTANCE        30  // Inset distance from bed's edge for calculating leveling point location.
+#define LEVELING_EDGE_DISTANCE        35  // Inset distance from bed's edge for calculating leveling point location.
 #define LEVELING_POINT_Z            0.2f  // Z-axis position when nozzle stays for leveling
 #define LEVELING_POINT_MOVE_Z      10.0f  // Z-axis position when nozzle move to next point
 #define LEVELING_POINT_XY_FEEDRATE  6000  // (mm/min) X and Y axes move feedrate
