@@ -41,6 +41,7 @@ void ScanLevelCorner(u8 pointer)
   }
 
   mustStoreCmd("M17 X Y Z\n");
+  mustStoreCmd("M18 S0 X Y Z\n");
 }
 
 void refreshLevelCornerValue(MENUITEMS levelItems)
@@ -141,6 +142,7 @@ void menuLevelCorner(void)
           infoSettings.level_edge = NOBEYOND(LEVELING_EDGE_DISTANCE_MIN, val, LEVELING_EDGE_DISTANCE_MAX);
           infoSettings.level_edge = ((val >= edge_min) ? val : edge_min);
           menuDrawPage(&levelcornerItems);
+          ReadValuestored = 6;
         }
         break;
 
@@ -151,6 +153,7 @@ void menuLevelCorner(void)
       case KEY_ICON_5:
         mustStoreCmd("M48\n");
         mustStoreCmd("M17 X Y Z\n");
+        mustStoreCmd("M18 S0 X Y Z\n");
         break;
 
       case KEY_ICON_6:
