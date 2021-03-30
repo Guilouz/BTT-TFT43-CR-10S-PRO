@@ -19,7 +19,6 @@ const MENUITEMS levelcornerItems = {
 
 LIVE_INFO lvIcon;
 
-
 void ScanLevelCorner(u8 pointer)
 {
   s16 pointPosition[4][2] = {
@@ -33,7 +32,7 @@ void ScanLevelCorner(u8 pointer)
   {
     mustStoreCmd("M401\n");
     mustStoreCmd("G30 E0 X%d Y%d\n", (s16)pointPosition[pointer][0], (s16)pointPosition[pointer][1]);
-	mustStoreCmd("G1 Z10\n");
+	  mustStoreCmd("G1 Z10\n");
   }
   else
   {
@@ -47,7 +46,7 @@ void ScanLevelCorner(u8 pointer)
 void refreshLevelCornerValue(MENUITEMS levelItems)
 {
   char tempstr[10];
-  int valIndex[4] = {4,6,2,0};
+  int valIndex[4] = {4,5,1,0};
   int valPos;
   int valPosSub;
   LIVE_INFO lvIcon;
@@ -82,11 +81,11 @@ void refreshProbeAccuracy(MENUITEMS levelItems)
     lvIcon.lines[4].pos = ss_val_point;
     sprintf(tempstr, "%1.4f", GetLevelCornerPosition(5));
     lvIcon.lines[4].text = (uint8_t *)tempstr;
-    showLevelCornerLiveInfo(5, 4, &lvIcon, &levelItems.items[5]);
+    showLevelCornerLiveInfo(3, 4, &lvIcon, &levelItems.items[3]);
     lvIconM48.lines[0].pos = ss_val_point;
     sprintf(tempstr, "%s", " M48    ");
     lvIconM48.lines[0].text = (uint8_t *)tempstr;
-    showTextOnIcon(5, 0, &lvIconM48, &levelcornerItems.items[5]);
+    showTextOnIcon(3, 0, &lvIconM48, &levelcornerItems.items[3]);
     SetLevelCornerPosition(0, 0);
   }
 }
