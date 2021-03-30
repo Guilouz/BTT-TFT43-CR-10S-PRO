@@ -221,6 +221,7 @@ static inline void reDrawProgress(int icon_pos, uint8_t prevProgress)
   progStart = ((ProgressBar.x1 - ProgressBar.x0) * prevProgress) / 100;
   progEnd = ((ProgressBar.x1 - ProgressBar.x0) * infoPrinting.progress) / 100;
   GUI_FillRectColor(ProgressBar.x0 + progStart, ProgressBar.y0, ProgressBar.x0 + progEnd, ProgressBar.y1, MAT_ORANGE);
+
 }
 
 static inline void reDrawLayer(int icon_pos)
