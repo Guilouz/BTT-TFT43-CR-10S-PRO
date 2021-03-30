@@ -7,12 +7,12 @@ const MENUITEMS levelcornerItems = {
   // icon                      label
   {
     {ICON_POINT_4,             LABEL_BACKGROUND},
-    {ICON_RESUME,              LABEL_START},
     {ICON_POINT_3,             LABEL_BACKGROUND},
     {ICON_LEVEL_EDGE_DISTANCE, LABEL_DISTANCE},
-    {ICON_POINT_1,             LABEL_BACKGROUND},
     {ICON_BLTOUCH,             LABEL_BACKGROUND},
+    {ICON_POINT_1,             LABEL_BACKGROUND},
     {ICON_POINT_2,             LABEL_BACKGROUND},
+    {ICON_RESUME,              LABEL_START},
     {ICON_BACK,                LABEL_BACK},
   }
 };
@@ -102,10 +102,7 @@ void menuLevelCorner(void)
   mustStoreCmd("M851\n");
 
   // Init Coordinate
-  if (coordinateIsKnown() == false)
-  {
-    mustStoreCmd("G28\n");
-  }
+  mustStoreCmd("G28\n");
 
   // Check min edge limit for the probe with probe offset set in parseACK.c
   uint8_t edge_min = MAX(ABS(getParameter((s16)P_PROBE_OFFSET, X_STEPPER)),ABS((s16)getParameter(P_PROBE_OFFSET, Y_STEPPER))) + 1;
