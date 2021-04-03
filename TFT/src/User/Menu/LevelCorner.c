@@ -119,6 +119,13 @@ void menuLevelCorner(void)
         ScanLevelCorner(3);
         break;
 
+      case KEY_ICON_6:
+        ScanLevelCorner(0);
+        ScanLevelCorner(1);
+        ScanLevelCorner(2);
+        ScanLevelCorner(3);
+        break;
+
       case KEY_ICON_1:
         ScanLevelCorner(2);
         break;
@@ -135,25 +142,18 @@ void menuLevelCorner(void)
         }
         break;
 
+      case KEY_ICON_4:
+        ScanLevelCorner(0);
+        break;
+
       case KEY_ICON_3:
         mustStoreCmd("M48\n");
         mustStoreCmd("M17 X Y Z\n");
         mustStoreCmd("M18 S0 X Y Z\n");
         break;
 
-      case KEY_ICON_4:
-        ScanLevelCorner(0);
-        break;
-
       case KEY_ICON_5:
         ScanLevelCorner(1);
-        break;
-
-      case KEY_ICON_6:
-        ScanLevelCorner(0);
-        ScanLevelCorner(1);
-        ScanLevelCorner(2);
-        ScanLevelCorner(3);
         break;
 
       case KEY_ICON_7:

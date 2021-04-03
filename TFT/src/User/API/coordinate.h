@@ -44,7 +44,7 @@ void coordinateQuerySetWait(bool wait);
 void coordinateQuery(void);
 void  SetLevelCornerPosition(int point, float position);
 float GetLevelCornerPosition(int point);
-  
+
 #ifdef __cplusplus
 }
 #endif

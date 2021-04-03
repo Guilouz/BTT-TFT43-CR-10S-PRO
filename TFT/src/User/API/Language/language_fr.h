@@ -262,7 +262,7 @@
     #define STRING_UBL                    "UBL"
     #define STRING_MBL                    "MBL"
     #define STRING_MBL_SETTINGS           "Nivellement Mesh"
-    #define STRING_ABL_SETTINGS           "Nivellement Automatique"
+    #define STRING_ABL_SETTINGS           "Nivellement Auto"
     #define STRING_ABL_SETTINGS_BBL       "Nivellement Bilinéaire"
     #define STRING_ABL_SETTINGS_UBL       "Nivellement Unifié"
     #define STRING_ABL_SETTINGS_UBL_SAVE  "Enregistrer dans l'emplacement"

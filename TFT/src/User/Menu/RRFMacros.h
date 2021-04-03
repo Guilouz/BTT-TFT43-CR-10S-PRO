@@ -6,7 +6,6 @@ extern "C" {
 #endif
 
 void menuCallMacro(void);
-
 #ifdef __cplusplus
 }
 #endif
