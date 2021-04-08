@@ -1,5 +1,5 @@
 
-
+Si vous aimez ce que je fais, n'hésitez pas à me soutenir en me payant une 🍺 ou un ☕ : paypal.me/CyrilGuislain
 
 
 <!-- omit in toc -->
