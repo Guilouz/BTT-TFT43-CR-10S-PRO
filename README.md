@@ -137,42 +137,50 @@ Voir [les guides de customisation](https://github.com/bigtreetech/BIGTREETECH-To
 
 ## Afficher plus de statistiques à la fin de l'impression
 
-Statistics as filament length, filament weight and filament cost can be embedded into the gCode. After the print is finished there will be an infobox that you can click and a popup will present you the printed filename (limited to the first 25 characters), the time needed for the print, the filament length used, the filament weight and its cost. In the case of multi-filament usage the statistics will show the sum of all individual data (sum of length, sum of weight, sum of cost).
-The statistic data in the gCode must have the following format (a good practice would be to include this at the beginning of the gCode):
-* `M118 P0 filament_data L:{12.3456}m`  L: represents the length in meters
-* `M118 P0 filemant_data W:{1.23456}g`  W: represents the weight in grams
-* `M118 P0 filament_data C:{0.1234}`    C: represents the cost without a unit
+Des statistiques telles que la longueur du filament, le poids du filament et le coût du filament peuvent être intégrées dans le gCode. 
+Une fois l'impression terminée, il y aura une infobox sur laquelle vous pouvez cliquer et une fenêtre contextuelle vous présentera le nom du fichier imprimé (limité aux 25 premiers caractères), le temps nécessaire à l'impression, la longueur du filament utilisé, le poids du filament et son coût. Dans le cas d'une utilisation multi-filament, les statistiques afficheront la somme de toutes les données individuelles (somme des longueurs, somme des poids, somme des coûts).
 
-The values of every filament data can be in a brackets, parentheses, apostrophes, etc. or without them, measurement units can be there or not.
-So `M118 P0 filament_data L:(12.3456)m`, `M118 P0 filament_data L:12.3456meters`, `M118 P0 filament_data L:[12.3456]` and so on are all valid formats.
-For multi-filament print statistics the data for each used filament should be written, they can be separated by comma, space, asterix, whatever, except ";" and ".".
-Examples for multi-filament:
+Les données statistiques dans le gCode doivent avoir le format suivant (une bonne pratique serait de l'inclure au début du gCode) :
+* `M118 P0 filament_data L:{12.3456}m`  L: représente la longueur en mètres
+* `M118 P0 filemant_data W:{1.23456}g`  W: représente le poids en grammes
+* `M118 P0 filament_data C:{0.1234}`    C: représente le coût sans unité
+
+Les valeurs de chaque donnée de filament peuvent être entre crochets, parenthèses, apostrophes, etc. ou sans, les unités de mesure peuvent être présentes ou non.
+Donc `M118 P0 filament_data L:(12.3456)m`, `M118 P0 filament_data L:12.3456meters`, `M118 P0 filament_data L:[12.3456]` et ainsi de suite sont tous des formats valides.
+
+Pour les statistiques d'impression multi-filament, les données de chaque filament utilisé doivent être écrites, elles peuvent être séparées par une virgule, un espace, un astérisque, peu importe, sauf ";" et ".".
+Exemples pour multi-filament:
 * `M118 P0 filament_data L:(12.3456, 8.2520974)m`
 * `M118 P0 filament_data W: 24.87652 15.568264 gramm`
 * `M118 P0 filament_data C:[1.3456], [0.56024]`
 
-The inclusion of the filament data into the gCode can be automated. In Cura all you have to do is to insert the following into the Start G-Code:
+L'inclusion des données de filament dans le gCode peut être automatisée. Dans Cura, tout ce que vous avez à faire est d'insérer ce qui suit dans le Start G-Code :
 * `M118 P0 filament_data L:{filament_amount}m`
 * `M118 P0 filament_data W:{filament_weight}g`
 * `M118 P0 filament_data C:{filament_cost}`
 
-In case the gCode file has been generated using the  [BTT 3D Plug-In Suit](https://github.com/bigtreetech/Bigtree3DPluginSuit), the data is automatically added.
+Dans le cas où le fichier gCode a été généré à l'aide du plugin [BTT 3D Plug-In Suit](https://github.com/bigtreetech/Bigtree3DPluginSuit), les données sont automatiquement ajoutées.
 
-In case filament data is not present in the gCode, the filament length data is calculated during print. Length is calculated regardless of using the TFT USB, TFT SD or the onboard SD. Calculations are done in both absolute or relative extrusion mode. Filament data takes into account the flow rate also but with a caveat. It has to be the same flow rate during the entire time of the printing, because the end result is calculated based on the flow rate at the time the print has finished. If flow rate changes during the print the results will not be accurate anymore.
-
-
-## Troubleshooting
-
-**In case the upload of a new firmware failed**
-
-First, verify that you have been using the correct version for your TFT. After that, try to upload the new firmware again (like described above) using a **new** SD card - 8GB or smaller, FAT32 formatted. Some uploads worked fine after executing a low level format of the SD card and not a quick format.
-
-**Simple Reset**
-
-To reset the TFT's touch screen calibration, create a blank file named  "reset" with the file-extension "txt", and place it in the root folder of an SD card (the SD card capacity must be less than or equal 8GB and formatted as FAT32). Insert the SD card into the TFT's SD card reader and power cycle your printer or restet your TFT to start the reset process.
-
-**Worst Case Scenario**
-
-In case the screen remains black or the brightness is not stable, the screen does not react after pressing a button or executes clicks by itself or does something similar - and the reset described above did not help - do the following. Remove the TFT from the enclosure and disconnect everything from the TFT, including the cable to the mainboard. Cut a USB cable you do not need anymore and connect the red and black wire to 5V and GND of the TFT. Do not use the unshielded wires directly but use a 2 pin connector instead. Power up the TFT and try to reset the TFT or to instal a new firmware like described in this document. With only power supplied, you should be able to navigate through the menus using the touchscreen and even to switch to Marlin Emulation (if available), even the Marlin Emulation screen will not show the interface with a proper EXP based connection.
+Si les données de filament ne sont pas présentes dans le gCode, les données de longueur de filament sont calculées pendant l'impression. La longueur est calculée indépendamment de l'utilisation du port USB du TFT, du port SD du TFT ou du port SD intégré. Les calculs sont effectués en mode d'extrusion absolu ou relatif. Les données de filament tiennent également compte du débit, mais avec une mise en garde. Il doit être le même débit pendant toute la durée de l'impression, car le résultat final est calculé en fonction du débit au moment où l'impression est terminée. Si le débit change pendant l'impression, les résultats ne seront plus précis.
 
 
+## Informations Octoprint
+
+- Lors de l’impression via Octoprint, l’écran ne bascule pas en mode « Impression » cependant toutes les fonctionnalités restent accessibles (babysteps, etc...) et les ordres reçus par l’écran (M600, détection de fin de filament, etc...) s’affichent correctement.
+- Les actions requises par l’utilisateur peuvent être gérées depuis l’écran ou directement via Octoprint.
+
+
+## Dépannage
+
+**En cas d'échec de mise à jour d'un nouveau firmware**
+
+Tout d'abord, vérifiez que vous avez utilisé la bonne version pour votre écran. Après cela, essayez à nouveau de mettre à jour (comme décrit ci-dessus) en utilisant une **nouvelle** carte SD - 8 Go ou moins, formatée en FAT32. Certaines mises à jour ont bien fonctionné après l'exécution d'un formatage de bas niveau de la carte SD et non d'un formatage rapide.
+
+**Réinitialisation simple**
+
+Pour réinitialiser l'étalonnage tactile de l'écran, créez un fichier vierge nommé "reset" avec l'extension de fichier ".txt" et placez-le dans à la racine d'une carte SD (la capacité de la carte SD doit être inférieure ou égale à 8 Go et formatée en FAT32). Insérez la carte SD dans le port SD de l'écran et redémarrez votre imprimante ou appuyez sur le bouton reset pour démarrer le processus de réinitialisation.
+
+**Pire scénario**
+
+Si l'écran reste noir ou que la luminosité n'est pas stable, l'écran ne réagit pas après avoir appuyé sur un bouton ou exécute des clics par lui-même ou fait quelque chose de similaire - et que la réinitialisation décrite ci-dessus n'a pas aidé - procédez comme suit. Retirez l'écran du boîtier et déconnectez tous les câbles, y compris le câble de la carte mère. Coupez un câble USB dont vous n'avez plus besoin et connectez le fil rouge au 5V et le noir au GND de l'écran. 
+N'utilisez pas directement les fils non blindés mais utilisez plutôt un connecteur à 2 broches. Mettez l'écran sous tension et essayez de réinitialiser l'écran ou d'installer un nouveau firmware comme décrit dans ce document. Avec seulement l'alimentation fournie, vous devriez être en mesure de naviguer dans les menus à l'aide de l'écran tactile et même de passer à l'émulation Marlin (si disponible), même si l'écran d'émulation Marlin ne s'affichera pas.
