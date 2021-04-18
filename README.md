@@ -44,7 +44,7 @@ Structure du dossier des polices et des icônes :
 - `TFT43/bmp`: icônes
 
 
-**Élément 3 :** Le fichier de configuration config.ini
+**Élément 3 :** Le fichier de configuration `config.ini`
 
 **Élément 4 :** Un ou plusieurs fichiers de langue **(optionnel)**
 
@@ -54,7 +54,7 @@ Structure du dossier des polices et des icônes :
 
 ![Firmware](https://user-images.githubusercontent.com/54359396/100600549-b6cffd00-3301-11eb-8b57-d56b7a4422f1.jpg)
 
-**Optionnel**, copiez un ou plusieurs fichier(s) de langue à la racine de la carte SD. Cela vous permettra de basculer entre l'anglais et la ou les langues téléchargées, en utilisant la fonction Langue correspondante du TFT. Il est recommandé de télécharger le minimum de langues afin de limiter l'utilisation de la mémoire.
+**Optionnel**, copiez un ou plusieurs fichier(s) de langue à la racine de la carte SD. Cela vous permettra de basculer entre l'anglais et la ou les langues téléchargées, en utilisant la fonction Langue dans les menus de l'écran. Il est recommandé de télécharger le minimum de langues afin de limiter l'utilisation de la mémoire.
 
 ![Language Pack](https://user-images.githubusercontent.com/54359396/100600564-b9caed80-3301-11eb-8997-d376f05323f6.jpg)
 
