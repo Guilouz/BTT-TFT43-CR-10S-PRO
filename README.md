@@ -16,7 +16,7 @@ Firmware pour écran BigTreeTech TFT43 3.0 configurée pour Creality CR-10S Pro.
   
 ## Connection de l'écran à la carte mère
 
-![Câblage TFT43](https://user-images.githubusercontent.com/12702322/115152362-10e31c00-a071-11eb-80db-e5554de2c958.png)
+<img align="right" width=600 src="https://user-images.githubusercontent.com/12702322/115152362-10e31c00-a071-11eb-80db-e5554de2c958.png" />
 
 **Note : Le mode "Marlin" n'est pas disponible sur la Creality CR-10S Pro en raison des limitations de la carte mère.** 
 
