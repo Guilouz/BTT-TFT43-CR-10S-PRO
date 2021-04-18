@@ -24,7 +24,7 @@ Firmware pour écran BigTreeTech TFT43 3.0 configurée pour Creality CR-10S Pro.
 
 ## Mise à jour du firmware
 
-La mise à jour du firmware TFT se fait en deux étapes décrites ci-dessous et comprend jusqu'à quatre éléments :
+La mise à jour du firmware TFT se fait en trois étapes décrites ci-dessous et comprend jusqu'à quatre éléments :
 
 **ÉLÉMENTS :**
 
@@ -66,32 +66,35 @@ Structure du dossier des polices et des icônes :
 
 ## Processus de mise à jour affiché sur l'écran TFT
 
-A successful update looks like this on the screen:
+Une mise à jour réussie ressemble à ceci sur l'écran :
 
 ![Screenshot 2020-09-26 at 22 10 04](https://user-images.githubusercontent.com/54359396/94349526-5abcd400-0045-11eb-993a-afc5b241f4d7.png)
 
-... and the name of the elements on the SD card changes to this:
+... et le nom des éléments sur la carte SD change comme suit :
 
 ![After Update](https://user-images.githubusercontent.com/54359396/94349755-dc156600-0047-11eb-9b1e-a1334bc5675f.png)
 
-In case one or several parts of the update failed, an error will be shown. Follow the information on the screen to update the missing or outdated elements.
+
+En cas d'échec d'une ou plusieurs parties de la mise à jour, une erreur s'affichera. Suivez les informations à l'écran pour mettre à jour les éléments manquants ou obsolètes.
 
 ![Screenshot 2020-10-23 at 14 37 36](https://user-images.githubusercontent.com/54359396/97004894-002c7000-153e-11eb-9951-f493be46af3e.png)
 
-<p align=center> ⚠️ Errors during the update can not be ignored and must be solved before using the TFT ⚠️ </p>
+⚠️ Les erreurs lors de la mise à jour ne peuvent pas être ignorées et doivent être résolues avant d'utiliser l'écran ⚠️
 
-After the update is done and the files are renamed, it is possible to reuse them again. To do so, change the name of the element(s) to the pre-update name and start the update process again.
 
-**step3:** Remove the SD card from the TFT and restart the printer.
+
+**Étape 3 :** Retirez la carte SD de l'écran et redémarrez l'imprimante.
 
 
 
 
 ## Configuration
 
-The Firmware can be modified by changing the **config.ini** file from: [`Copy to SD Card root directory to update`](https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware/tree/master/Copy%20to%20SD%20Card%20root%20directory%20to%20update) using a simple text editor (make sure to use UTF encoding).
+Bien que déjà configuré pour la Creality CR-10S Pro, le fichier **config.ini** peut être modifié en utilisant un simple éditeur de texte (assurez-vous d'utiliser le codage UTF).
 
-Once saved, the config.ini can be uploaded without the need to upload the firmware or the TFT folder again, as long as the firmware and the config.ini are from the same version.
+Une fois modifié et enregistré, le fichier config.ini peut être installé sans qu'il soit nécessaire d'installer à nouveau le firmware ou le dossier TFT43, à condition que le firmware et le fichier config.ini soient de la même version.
+
+
 
 ### Editing configuration (config.ini) file
 
