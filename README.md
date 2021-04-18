@@ -101,44 +101,41 @@ Pour éditer le fichier **config.ini** suivez les instructions [ici](config_inst
 
 
 
-### Updating Firmware Configuration
+### Mise à jour de la configuration du firmware
 
-To update the Firmware configuration:
 
-1. Edit the settings in **config.ini**.
+1. Modifiez les paramètres dans le fichier **config.ini**.
 
-2. Copy the **config.ini** file to the root of the SD card. (The SD card capacity should be less than or equal to 8GB and formatted as FAT32)
+2. Copiez le fichier **config.ini** à la racine de la carte SD. (La capacité de la carte SD doit être inférieure ou égale à 8 Go et formatée en FAT32).
 
-3. Insert the SD card into the TFT's SD card slot and restart the printer or press the reset buttion of the TFT.
+3. Insérez la carte SD dans le port SD de l'écran et redémarrez votre imprimante ou appuyez sur le bouton reset de l'écran.
 
-4. The TFT will update and store the configuration from **config.ini** file.
+4. L'écran mettra à jour et stockera la configuration à partir du fichier **config.ini**.
 
-5. Make sure to remove the SD card from the TFT and restart the printer.
+5. Assurez-vous de retirer la carte SD de l'écran et de redémarrez l'imprimante.
 
-6. On the TFT click on Menu - Settings - Feature and navigate to the last page. Click on
+6. Sur l'écran naviguez dans **Menu - Options - Paramètres** puis accédez à la dernière page. Cliquez sur **RàZ des paramètres**.
 
-   "Reset default settings ..."
-
-7. Restart the printer to finish the update of the config.ini
+7. Redémarrez l'imprimante pour terminer la mise à jour du fichier config.ini.
 
 
 ## Menus
 
-|                    Status Screen DISABLED                    |                    Status Screen ENABLED                     |
+|                    Écran d'état DÉSACTIVÉ                    |                    Écran d'état ACTIVÉ                     |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![status screen 0](https://user-images.githubusercontent.com/54359396/103319145-09035b80-4a31-11eb-91d0-dd761a48b6f5.png) | ![Unified Material Main Screen](https://user-images.githubusercontent.com/54359396/98742038-03cd4d00-23ae-11eb-9552-36dc02fe66f4.png) |
-| In config.ini define: General Settings<br/>Enable Status Screen<br/># Select the Main Screen flavour<br/># Options: [Enable: 1, Disable: 0]<br/>**status_screen: 0** | In config.ini define: General Settings<br/>Enable Status Screen<br/># Select the Main Screen flavour<br/># Options: [Enable: 1, Disable: 0]<br/>**status_screen: 1** |
+| Dans le fichier config.ini définir : General Settings<br/>Enable Status Screen<br/># Select the Main Screen flavour<br/># Options: [Enable: 1, Disable: 0]<br/>**status_screen: 0** | Dans le fichier config.ini définir : General Settings<br/>Enable Status Screen<br/># Select the Main Screen flavour<br/># Options: [Enable: 1, Disable: 0]<br/>**status_screen: 1** |
 
 
 
-## Customization
+## Customisation
 
-### Bootscreen and Icons
+### Écran de démarrage et Icônes
 
-See [Customization guides](https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware/tree/master/readme/) for detailed  information.
+Voir [les guides de customisation](https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware/tree/master/readme/) pour des informations détaillées.
 
 
-## Show more statistics at the end of the print
+## Afficher plus de statistiques à la fin de l'impression
 
 Statistics as filament length, filament weight and filament cost can be embedded into the gCode. After the print is finished there will be an infobox that you can click and a popup will present you the printed filename (limited to the first 25 characters), the time needed for the print, the filament length used, the filament weight and its cost. In the case of multi-filament usage the statistics will show the sum of all individual data (sum of length, sum of weight, sum of cost).
 The statistic data in the gCode must have the following format (a good practice would be to include this at the beginning of the gCode):
