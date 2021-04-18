@@ -87,7 +87,6 @@ En cas d'échec d'une ou plusieurs parties de la mise à jour, une erreur s'affi
 
 
 
-
 ## Configuration
 
 Bien que déjà configuré pour la Creality CR-10S Pro, le fichier **config.ini** peut être modifié en utilisant un simple éditeur de texte (assurez-vous d'utiliser le codage UTF).
@@ -96,9 +95,11 @@ Une fois modifié et enregistré, le fichier config.ini peut être installé san
 
 
 
-### Editing configuration (config.ini) file
+### Modification du fichier de configuration (config.ini)
 
-To edit the **config.ini** file follow the instruction here: [Detailed Instructions here](config_instructions.md)
+Pour éditer le fichier **config.ini** suivez les instructions [ici](config_instructions.md).
+
+
 
 ### Updating Firmware Configuration
 
