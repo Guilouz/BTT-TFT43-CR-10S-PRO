@@ -161,7 +161,7 @@ L'inclusion des données de filament dans le gCode peut être automatisée. Dans
 
 Dans le cas où le fichier gCode a été généré à l'aide du plugin [BTT 3D Plug-In Suit](https://github.com/bigtreetech/Bigtree3DPluginSuit), les données sont automatiquement ajoutées.
 
-Si les données de filament ne sont pas présentes dans le gCode, les données de longueur de filament sont calculées pendant l'impression. La longueur est calculée indépendamment de l'utilisation du port USB du TFT, du port SD du TFT ou du port SD intégré. Les calculs sont effectués en mode d'extrusion absolu ou relatif. Les données de filament tiennent également compte du débit, mais avec une mise en garde. Il doit être le même débit pendant toute la durée de l'impression, car le résultat final est calculé en fonction du débit au moment où l'impression est terminée. Si le débit change pendant l'impression, les résultats ne seront plus précis.
+Si les données de filament ne sont pas présentes dans le gCode, les données de longueur de filament sont calculées pendant l'impression. La longueur est calculée indépendamment de l'utilisation du port USB du TFT, du port SD du TFT ou du port SD intégré. Les calculs sont effectués en mode d'extrusion absolu ou relatif. Les données de filament tiennent également compte du débit, mais avec une mise en garde. Le débit doit être le même pendant toute la durée de l'impression, car le résultat final est calculé en fonction du débit au moment où l'impression est terminée. Si le débit change pendant l'impression, les résultats ne seront plus précis.
 
 
 ## Informations Octoprint
