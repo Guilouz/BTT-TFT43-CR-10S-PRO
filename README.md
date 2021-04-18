@@ -146,6 +146,7 @@ Les données statistiques dans le gCode doivent avoir le format suivant (une bon
 * `M118 P0 filament_data C:{0.1234}`    C: représente le coût sans unité
 
 Les valeurs de chaque donnée de filament peuvent être entre crochets, parenthèses, apostrophes, etc. ou sans, les unités de mesure peuvent être présentes ou non.
+
 Donc `M118 P0 filament_data L:(12.3456)m`, `M118 P0 filament_data L:12.3456meters`, `M118 P0 filament_data L:[12.3456]` et ainsi de suite sont tous des formats valides.
 
 Pour les statistiques d'impression multi-filament, les données de chaque filament utilisé doivent être écrites, elles peuvent être séparées par une virgule, un espace, un astérisque, peu importe, sauf ";" et ".".
@@ -164,10 +165,28 @@ Dans le cas où le fichier gCode a été généré à l'aide du plugin [BTT 3D P
 Si les données de filament ne sont pas présentes dans le gCode, les données de longueur de filament sont calculées pendant l'impression. La longueur est calculée indépendamment de l'utilisation du port USB du TFT, du port SD du TFT ou du port SD intégré. Les calculs sont effectués en mode d'extrusion absolu ou relatif. Les données de filament tiennent également compte du débit, mais avec une mise en garde. Le débit doit être le même pendant toute la durée de l'impression, car le résultat final est calculé en fonction du débit au moment où l'impression est terminée. Si le débit change pendant l'impression, les résultats ne seront plus précis.
 
 
+
 ## Informations Octoprint
 
 - Lors de l’impression via Octoprint, l’écran ne bascule pas en mode « Impression » cependant toutes les fonctionnalités restent accessibles (babysteps, etc...) et les ordres reçus par l’écran (M600, détection de fin de filament, etc...) s’affichent correctement.
 - Les actions requises par l’utilisateur peuvent être gérées depuis l’écran ou directement via Octoprint.
+
+
+
+## Détecteur de fin de filament
+
+- Le détecteur de fin de filament fonctionne sans action requise lors de l’impression via le port microSD de la carte mère ou via Octoprint.
+- Pour faire fonctionner le détecteur de fin de filament via les ports SD et USB de l’écran, il faut ajouter la commande M75 dans le Start gCode et la commande M77 dans le End gCode de votre Slicer.
+
+
+
+## Reprise après coupure de courant
+
+- La reprise après coupure de courant n’est fonctionnelle que lors de l’impression via les ports SD et USB de l’écran.
+- Cette fonctionnalité est activée par défaut, elle créée un fichier nommé PLR à la racine de la carte SD et/ou clé USB qui enregistre l’état au fur et à mesure de l’impression.
+- Si vous n’utilisez pas cette fonctionnalité désactivez-la pour préserver la carte SD et/ou clé USB via **Menu - Options - Paramètres - Reprise après coupure**.
+- Pour reprendre l’impression après coupure, il suffit de se rendre à nouveau à l’emplacement de votre fichier gCode, l’écran demandera alors si vous désirez reprendre ou non l’impression.
+
 
 
 ## Dépannage
