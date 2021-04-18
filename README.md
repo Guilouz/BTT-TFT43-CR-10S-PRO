@@ -16,25 +16,11 @@ Firmware pour écran BigTreeTech TFT43 3.0 configurée pour Creality CR-10S Pro.
   
 ## Connection de l'écran à la carte mère
 
-**Do the following, to be able to use the touchmode of your screen.** 
+![Câblage TFT43](https://user-images.githubusercontent.com/12702322/115152362-10e31c00-a071-11eb-80db-e5554de2c958.png)
 
-1. Connect the 5pin serial cable according to the manual of your mainboard.
-2. Define a serial port in Marlin, to activate the port used by the TFT.
-3. Make sure the same BAUDRATE is defined in Marlin and the firmware of your TFT (config.ini)
 
-In case one of the three points above is not done right, "No printer attached" will be shown at the top of the screen in touchscreen mode This is because the TFT can not "see" the mainboard through the serial cable.
+**Note : Le mode "Marlin" n'est pas disponible sur la Creality CR-10S Pro en raison des limitations de la carte mère.** 
 
-**Do the following, to be able to use the Marlin emulation mode of your screen.** 
-
-A: In case your TFT does **not** have an EXP connector at all (TFT28 v1 for example), you can not use the Marlin emulator mode.
-
-B: In case your mainboard provides **EXP1 and EXP2**, you have to connect 2 ribbon cables connecting EXP1 and EXP2 of the mainboard to EXP1 and EXP2 of the TFT. In the Marlin firmware of your mainboard, make sure that **ONLY** the "REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER" is activated in Configuration.h and that all other controllers are **De**activated (especially the "CR10_STOCKDISPLAY").
-
-C: In case you have an **"E3" mainboard** which provides a **single EXP connector**, you have to connect 1 ribbon cable connecting EXP of the mainboard to **EXP3** of the TFT. In case your TFT does **not** provide an EXP3 connector but only two 10pin connectors (TFT24 v1.1 for example) you will need a "Y-split" cable with one 10pin connector on one side (for the mainboard) and two 10pin connectors on the other side (for the TFT). In the Marlin firmware of your mainboard, make sure that **ONLY** the "CR10_STOCKDISPLAY" is activated in Configuration.h and that all other controllers are **De**activated (especially the "REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER").
-
-![Screenshot 2021-03-07 at 22 41 02](https://user-images.githubusercontent.com/54359396/110255941-96fe4400-7f96-11eb-93b9-199c5be14eb8.png)
-
-This chart has been provided by user Thomas White
 
 ## Menus
 
