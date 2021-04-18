@@ -24,7 +24,7 @@ Firmware pour écran BigTreeTech TFT43 3.0 configurée pour Creality CR-10S Pro.
 
 ## Mise à jour du firmware
 
-La mise à jour du firmware TFT se fait en trois étapes décrites ci-dessous et comprend jusqu'à quatre éléments :
+La mise à jour du firmware TFT se fait en deux étapes décrites ci-dessous et comprend jusqu'à quatre éléments :
 
 **ÉLÉMENTS :**
 
