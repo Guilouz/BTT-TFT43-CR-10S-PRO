@@ -11,32 +11,6 @@ Si vous aimez mon travail, n'hésitez pas à me soutenir en me payant une 🍺 o
 
 
 Firmware pour écran BigTreeTech TFT43 3.0 configurée pour Creality CR-10S Pro.
-
-
-## Table of Contents
-
-- [Connection de l'écran à la carte mère](#connection-de-l'écran-à-la-carte-mère)
-
-- [Menus and Themes](#menus-and-themes)
-
-- [Update TFT Firmware](#update-tft-firmware)
-
-- [Configuration](#configuration)
-
-- [Customization](#customization)
-
-  - [Bootscreen and Icons](#bootscreen-and-icons)
-  - [Firmware](#firmware)
-
-- [Troubleshooting](#troubleshooting)
-
-- [Version History](#version-history)
-
-- [Appendix](#appendix)
-
-  - [Setup of BTT TFT35 E3 V3.0 with MKS SGEN_L Mainboards](#Setup-of-BTT-TFT35-E3-V3.0-with-MKS-SGEN-L-Mainboards)
-  - [Show more statistics at the end of the print](#show-more-statistics-at-the-end-of-the-print)
-
   
 
 ## Connection de l'écran à la carte mère
