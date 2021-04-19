@@ -9,7 +9,7 @@ Firmware pour écran BigTreeTech TFT43 3.0 configuré pour Creality CR-10S Pro.
 
 <img width=600 src="https://user-images.githubusercontent.com/12702322/115151934-61597a00-a06f-11eb-89db-372e3d1e4647.jpg" />
   
-<br /><br /> 
+<br />
   
 ## Connection de l'écran à la carte mère
 
@@ -17,7 +17,7 @@ Firmware pour écran BigTreeTech TFT43 3.0 configuré pour Creality CR-10S Pro.
 
 **Note : Le mode "Marlin" n'est pas disponible sur la Creality CR-10S Pro en raison des limitations de la carte mère.** 
 
-
+<br />
 
 ## Mise à jour du firmware
 
@@ -59,7 +59,7 @@ Structure du dossier des polices et des icônes :
 
 ⚠️ Ne pas mettre à jour les icônes et / ou les polices entraîneront des icônes manquantes et / ou du texte illisible ⚠️
 
-
+<br />
 
 ## Processus de mise à jour affiché sur l'écran TFT
 
@@ -79,10 +79,9 @@ En cas d'échec d'une ou plusieurs parties de la mise à jour, une erreur s'affi
 ⚠️ Les erreurs lors de la mise à jour ne peuvent pas être ignorées et doivent être résolues avant d'utiliser l'écran ⚠️
 
 
-
 **Étape 3 :** Retirez la carte SD de l'écran et redémarrez l'imprimante.
 
-
+<br />
 
 ## Configuration
 
@@ -91,12 +90,11 @@ Bien que déjà configuré pour la Creality CR-10S Pro, le fichier **config.ini*
 Une fois modifié et enregistré, le fichier config.ini peut être installé sans qu'il soit nécessaire d'installer à nouveau le firmware ou le dossier TFT43, à condition que le firmware et le fichier config.ini soient de la même version.
 
 
-
 ### Modification du fichier de configuration (config.ini)
 
 Pour éditer le fichier **config.ini** suivez les instructions [ici](config_instructions.md).
 
-
+<br />
 
 ### Mise à jour de la configuration du firmware
 
@@ -115,6 +113,7 @@ Pour éditer le fichier **config.ini** suivez les instructions [ici](config_inst
 
 7. Redémarrez l'imprimante pour terminer la mise à jour du fichier config.ini.
 
+<br />
 
 ## Menus
 
@@ -123,7 +122,7 @@ Pour éditer le fichier **config.ini** suivez les instructions [ici](config_inst
 | ![status screen 0](https://user-images.githubusercontent.com/54359396/103319145-09035b80-4a31-11eb-91d0-dd761a48b6f5.png) | ![Unified Material Main Screen](https://user-images.githubusercontent.com/54359396/98742038-03cd4d00-23ae-11eb-9552-36dc02fe66f4.png) |
 | Dans le fichier config.ini définir : General Settings<br/>Enable Status Screen<br/># Select the Main Screen flavour<br/># Options: [Enable: 1, Disable: 0]<br/>**status_screen: 0** | Dans le fichier config.ini définir : General Settings<br/>Enable Status Screen<br/># Select the Main Screen flavour<br/># Options: [Enable: 1, Disable: 0]<br/>**status_screen: 1** |
 
-
+<br />
 
 ## Customisation
 
@@ -131,6 +130,7 @@ Pour éditer le fichier **config.ini** suivez les instructions [ici](config_inst
 
 Voir [les guides de customisation](https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware/tree/master/readme/) pour des informations détaillées.
 
+<br />
 
 ## Afficher plus de statistiques à la fin de l'impression
 
@@ -161,21 +161,21 @@ Dans le cas où le fichier gCode a été généré à l'aide du plugin [BTT 3D P
 
 Si les données de filament ne sont pas présentes dans le gCode, les données de longueur de filament sont calculées pendant l'impression. La longueur est calculée indépendamment de l'utilisation du port USB du TFT, du port SD du TFT ou du port SD intégré. Les calculs sont effectués en mode d'extrusion absolu ou relatif. Les données de filament tiennent également compte du débit, mais avec une mise en garde. Le débit doit être le même pendant toute la durée de l'impression, car le résultat final est calculé en fonction du débit au moment où l'impression est terminée. Si le débit change pendant l'impression, les résultats ne seront plus précis.
 
-
+<br />
 
 ## Informations Octoprint
 
 - Lors de l’impression via Octoprint, l’écran ne bascule pas en mode « Impression » cependant toutes les fonctionnalités restent accessibles (babysteps, etc...) et les ordres reçus par l’écran (M600, détection de fin de filament, etc...) s’affichent correctement.
 - Les actions requises par l’utilisateur peuvent être gérées depuis l’écran ou directement via Octoprint.
 
-
+<br />
 
 ## Détecteur de fin de filament
 
 - Le détecteur de fin de filament fonctionne sans action requise lors de l’impression via le port microSD de la carte mère ou via Octoprint.
 - Pour faire fonctionner le détecteur de fin de filament via les ports SD et USB de l’écran, il faut ajouter la commande M75 dans le Start gCode et la commande M77 dans le End gCode de votre Slicer.
 
-
+<br />
 
 ## Reprise après coupure de courant
 
@@ -184,7 +184,7 @@ Si les données de filament ne sont pas présentes dans le gCode, les données d
 - Si vous n’utilisez pas cette fonctionnalité désactivez-la pour préserver la carte SD et/ou clé USB via **Menu - Options - Paramètres - Reprise après coupure**.
 - Pour reprendre l’impression après coupure, il suffit de se rendre à nouveau à l’emplacement de votre fichier gCode, l’écran demandera alors si vous désirez reprendre ou non l’impression.
 
-
+<br />
 
 ## Dépannage
 
