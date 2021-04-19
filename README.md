@@ -47,13 +47,12 @@ Structure du dossier des polices et des icônes :
 
 **ÉTAPES :**
 
-**Étape 1 :** Copiez le firmware compilé BIGTREE_TFT*_V*.*.*.bin, le dossier TFT43 et le fichier config.ini à la racine d'une carte SD vierge inférieure à 8 Go et formatée en FAT32 :
+**Étape 1 :** Copiez le firmware compilé BIGTREE_TFT*_V*.*.*.bin, le dossier TFT43 et le fichier config.ini à la racine d'une carte SD vierge inférieure à 8 Go et formatée en FAT32.
 
-![Firmware](https://user-images.githubusercontent.com/54359396/100600549-b6cffd00-3301-11eb-8b57-d56b7a4422f1.jpg)
+**Optionnel**, copiez un ou plusieurs fichier(s) de langue à la racine de la carte SD. Cela vous permettra de basculer entre l'anglais et la ou les langues téléchargées, en utilisant la fonction Langue dans les menus de l'écran. Il est recommandé de télécharger le minimum de langues afin de limiter l'utilisation de la mémoire. Par défaut l'écran est configuré pour avoir l'anglais et le français.
 
-**Optionnel**, copiez un ou plusieurs fichier(s) de langue à la racine de la carte SD. Cela vous permettra de basculer entre l'anglais et la ou les langues téléchargées, en utilisant la fonction Langue dans les menus de l'écran. Il est recommandé de télécharger le minimum de langues afin de limiter l'utilisation de la mémoire.
+![Capture d’écran 2021-04-19 à 02 25 16](https://user-images.githubusercontent.com/12702322/115167147-a523a200-a0b6-11eb-8e2f-fd0627c468ab.jpg)
 
-![Language Pack](https://user-images.githubusercontent.com/54359396/100600564-b9caed80-3301-11eb-8997-d376f05323f6.jpg)
 
 **Étape 2 :** Insérez la carte SD dans le port SD de l'écran et réinitialisez ce dernier (ou redémarrez votre imprimante) pour démarrer le processus de mise à jour.
 
@@ -107,7 +106,7 @@ Pour éditer le fichier **config.ini** suivez les instructions [ici](config_inst
 
 5. Assurez-vous de retirer la carte SD de l'écran et de redémarrez l'imprimante.
 
-6. Sur l'écran naviguez dans **Menu - Options - Paramètres** puis accédez à la dernière page. Cliquez sur **RàZ des paramètres**.
+6. Sur l'écran naviguez dans **Menu - Options - Paramètres** puis accédez à la dernière page. Cliquez ensuite sur **RàZ des paramètres**.
 
 7. Redémarrez l'imprimante pour terminer la mise à jour du fichier config.ini.
 
