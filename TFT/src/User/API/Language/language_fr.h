@@ -106,7 +106,7 @@
     #define STRING_ZERO                   "Zéro"
     #define STRING_HALF                   "Moitié"
     #define STRING_FULL                   "Max"
-    #define STRING_CUSTOM                 "Gcode"
+    #define STRING_CUSTOM                 "Custom"
     #define STRING_CLEAR                  "Effacer"
     #define STRING_DEFAULT                "Défaut"
 
