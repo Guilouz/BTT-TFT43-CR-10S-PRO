@@ -94,8 +94,6 @@ Une fois modifié et enregistré, le fichier config.ini peut être installé san
 
 Pour éditer le fichier **config.ini** suivez les instructions [ici](config_instructions.md).
 
-<br />
-
 ### Mise à jour de la configuration du firmware
 
 
