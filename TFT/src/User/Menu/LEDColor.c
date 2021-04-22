@@ -33,6 +33,7 @@ typedef enum
 
 // colors
 #define KB_FONT_COLOR     infoSettings.font_color
+#undef KB_BG_COLOR
 #define KB_BG_COLOR       infoSettings.bg_color
 #define KB_BORDER_COLOR   infoSettings.list_border_color
 #define KB_BORDER_COLOR_2 0x4b0d
@@ -211,7 +212,10 @@ uint8_t ledGetControlSubIndex(uint8_t keyNum)
 
 uint16_t ledGetRGBColor(LED_VECT * led)
 {
-  return (((*led)[0] & 0x001F) << 11) | (((*led)[1] & 0x003F) << 5) | (((*led)[2] & 0x001F));  // RGB color in RGB 565 16 bit format
+  uint8_t r = (*led)[0] >> 3;
+  uint8_t g = (*led)[1] >> 2;
+  uint8_t b = (*led)[2] >> 3;
+  return ((r & 0x001F) << 11) | ((g & 0x003F) << 5) | ((b & 0x001F));  // RGB color in RGB 565 16 bit format
 }
 
 uint16_t ledGetComponentRGBColor(uint8_t component, uint8_t index)
