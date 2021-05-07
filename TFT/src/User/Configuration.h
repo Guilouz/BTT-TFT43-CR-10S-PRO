@@ -3,28 +3,38 @@
 #define CONFIG_VERSION 20210321
 
 //===========================================================================
-//============================= General Settings ============================
+//============================ Developer Settings ===========================
 //===========================================================================
 
 /**
  * Screenshot for documentation
  * Long press touch screen capture the current full screen to SD card
- * Only for documentation purposes, DON'T enable it when normal printing.
+ * Only for documentation purposes, DON'T enable it for normal printing.
  */
 //#define SCREEN_SHOT_TO_SD
 
 /**
+ * Serial Communication Debug
+ * Uncomment/Enable to forward/dump all serial communication to SERIAL_DEBUG_PORT defined in board specific Pin_xx.h file.
+ * Use it only for debugging purposes. DON'T enable it for normal printing.
+ */
+//#define DEBUG_SERIAL_COMM
+
+//===========================================================================
+//============================= General Settings ============================
+//===========================================================================
+
+// Enable Status Screen
+// Enable this to show status screen as the default home screen. Disabling it will show a static menu.
+#define ENABLE_STATUS_SCREEN true  // To enabled: true | To disabled: false (Default: true)
+
+/**
  * Smart Home
- *
  * If enabled, long press "Back" button triggers Home screen
  * It doesn't interfere with the "Screenshot" and "Marlin/Touch Mode" other than if
  * enabled, long press "Back" will not trigger "Screenshot" or "Marlin/Touch Mode"
  */
 #define SMART_HOME
-
-// Enable Status Screen
-// Enable this to show status screen as the default home screen. Disabling it will show a static menu.
-#define ENABLE_STATUS_SCREEN true  // To enabled: true | To disabled: false (Default: true)
 
 /**
  * This setting determines the communication speed of the printer.
@@ -169,7 +179,8 @@
 #define SPEED_ID {"Vi.", "Fr."}  // (speed, flow rate)
 
 // Axes names displayed in Parameter Settings menu
-#define AXIS_DISPLAY_ID  {"X",  "Y",  "Z",   "E0",  "E1"}  // (X, Y, Z, E0, E1)
+#define AXIS_DISPLAY_ID    {"X", "Y", "Z", "E0", "E1"}  // (X, Y, Z, E0, E1)
+#define STEPPER_DISPLAY_ID {"X", "X2", "Y", "Y2", "Z", "Z2", "E0", "E1"} // (X, X2, Y, Y2, Z, Z2, E0, E1)
 
 // Default X & Y speed (mm/min)
 #define SPEED_XY_SLOW   1000
@@ -217,7 +228,7 @@
  * Move to four corner points to Leveling manually (Point 1, Point 2, Point 3, Point 4).
  */
 #define LEVELING_EDGE_DISTANCE        35  // Inset distance from bed's edge for calculating leveling point location.
-#define LEVELING_POINT_Z            0.0f  // Z-axis position when nozzle stays for leveling
+#define LEVELING_POINT_Z            0.2f  // Z-axis position when nozzle stays for leveling
 #define LEVELING_POINT_MOVE_Z      10.0f  // Z-axis position when nozzle move to next point
 #define LEVELING_POINT_XY_FEEDRATE  6000  // (mm/min) X and Y axes move feedrate
 #define LEVELING_POINT_Z_FEEDRATE    600  // (mm/min) Z axis move feedrate
