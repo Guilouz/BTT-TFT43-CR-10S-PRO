@@ -185,7 +185,6 @@ static inline void reDrawSpeed(int icon_pos)
   GUI_SetTextMode(GUI_TEXTMODE_NORMAL);
 }
 
-
 static inline void reDrawProgress(int icon_pos, uint8_t prevProgress)
 {
   char progress[6];
@@ -237,9 +236,13 @@ static inline void toggleInfo(void)
       reValueNozzle(EXT_ICON_POS);
     }
 
-    if ((infoSettings.fan_count + infoSettings.fan_ctrl_count) > 1)
+    if ((infoSettings.fan_count + infoSettings.ctrl_fan_en) > 1)
     {
-      currentFan = (currentFan + 1) % (infoSettings.fan_count + infoSettings.fan_ctrl_count);
+      do
+      {
+        currentFan = (currentFan + 1) % MAX_FAN_COUNT;
+      } while (!fanIsValid(currentFan));
+
       RAPID_SERIAL_LOOP();  // perform backend printing loop before drawing to avoid printer idling
       reDrawFan(FAN_ICON_POS);
     }
@@ -394,7 +397,7 @@ void menuPrinting(void)
 
   while (infoMenu.menu[infoMenu.cur] == menuPrinting)
   {
-    //Scroll_DispString(&titleScroll, LEFT); // Scroll display file name will take too many CPU cycles
+    //Scroll_DispString(&titleScroll, LEFT);  // Scroll display file name will take too many CPU cycles
 
     // check nozzle temp change
     if (nowHeat.T[currentTool].current != heatGetCurrentTemp(currentTool) ||

@@ -1,6 +1,9 @@
 #include "common.h"
 #include "includes.h"
 
+// scrolling text line
+SCROLL scrollLine;
+
 // indexes for status icon toggles
 uint8_t currentTool = NOZZLE0;
 uint8_t currentFan = 0;
@@ -111,7 +114,7 @@ bool nextScreenUpdate(uint32_t duration)
   }
 }
 
-const void drawBorder(const GUI_RECT *rect, uint16_t color, uint16_t edgeDistance)
+void drawBorder(const GUI_RECT *rect, uint16_t color, uint16_t edgeDistance)
 {
   //uint16_t origColor = GUI_GetColor();
 
@@ -122,7 +125,7 @@ const void drawBorder(const GUI_RECT *rect, uint16_t color, uint16_t edgeDistanc
   //GUI_SetColor(origColor);
 }
 
-const void drawBackground(const GUI_RECT *rect, uint16_t bgColor, uint16_t edgeDistance)
+void drawBackground(const GUI_RECT *rect, uint16_t bgColor, uint16_t edgeDistance)
 {
   //uint16_t origBgColor = GUI_GetBkColor();
 
@@ -133,7 +136,7 @@ const void drawBackground(const GUI_RECT *rect, uint16_t bgColor, uint16_t edgeD
   //GUI_SetBkColor(origBgColor);
 }
 
-const void drawStandardValue(const GUI_RECT *rect, VALUE_TYPE valType, const void *val, bool largeFont,
+void drawStandardValue(const GUI_RECT *rect, VALUE_TYPE valType, const void *val, bool largeFont,
                              uint16_t color, uint16_t bgColor, uint16_t edgeDistance, bool clearBgColor)
 {
   uint16_t origColor = GUI_GetColor();
@@ -183,28 +186,45 @@ const void drawStandardValue(const GUI_RECT *rect, VALUE_TYPE valType, const voi
   GUI_SetBkColor(origBgColor);
 }
 
-const bool warmupTemperature(uint8_t toolIndex, void (* callback)(void))
+bool warmupTemperature(uint8_t toolIndex, void (* callback)(void))
 {
-  if (heatGetCurrentTemp(toolIndex) < infoSettings.min_ext_temp)
+  #define TEMP_OFFSET 5  // offset temperature to avoid denial of extrusion/retraction due to the nozzle temperature lag
+
+  if (heatGetCurrentTemp(toolIndex) < infoSettings.min_ext_temp - TEMP_OFFSET)
   { // low temperature warning
     char tempMsg[120];
     LABELCHAR(tempStr, LABEL_EXT_TEMPLOW);
 
     sprintf(tempMsg, tempStr, infoSettings.min_ext_temp);
-    strcat(tempMsg, "\n");
-    sprintf(tempStr, (char *) textSelect(LABEL_HEAT_HOTEND), infoSettings.min_ext_temp);
-    strcat(tempMsg, tempStr);
 
-    setDialogText(LABEL_WARNING, (uint8_t *) tempMsg, LABEL_CONFIRM, LABEL_CANCEL);
-    showDialog(DIALOG_TYPE_ERROR, callback, NULL, NULL);
+    if (heatGetTargetTemp(toolIndex) < infoSettings.min_ext_temp)
+    { // heatup offering
+      strcat(tempMsg, "\n");
+      sprintf(tempStr, (char *) textSelect(LABEL_HEAT_HOTEND), infoSettings.min_ext_temp);
+      strcat(tempMsg, tempStr);
 
+      setDialogText(LABEL_WARNING, (uint8_t *) tempMsg, LABEL_CONFIRM, LABEL_CANCEL);
+      showDialog(DIALOG_TYPE_ERROR, callback, NULL, NULL);
+    }
+    else
+    {
+      setDialogText(LABEL_WARNING, (uint8_t *) tempMsg, LABEL_CONFIRM, LABEL_BACKGROUND);
+      showDialog(DIALOG_TYPE_ERROR, NULL, NULL, NULL);
+    }
     return false;
+  }
+  else
+  { // temperature falling down to a target lower than the minimal extrusion temperature
+    if (heatGetTargetTemp(toolIndex) < infoSettings.min_ext_temp)
+    { // contiunue with current temp but no lower than the minimum extruder temperature
+      heatSetTargetTemp(toolIndex, MAX(infoSettings.min_ext_temp, heatGetCurrentTemp(toolIndex)));
+    }
   }
 
   return true;
 }
 
-const void cooldownTemperature(void)
+void cooldownTemperature(void)
 {
   if (!isPrinting())
   {
@@ -221,7 +241,7 @@ const void cooldownTemperature(void)
 }
 
 // Show/draw a temperature in a standard menu
-const void temperatureReDraw(uint8_t toolIndex, int16_t * temp, bool skipHeader)
+void temperatureReDraw(uint8_t toolIndex, int16_t * temp, bool skipHeader)
 {
   char tempstr[20];
 
@@ -246,7 +266,7 @@ const void temperatureReDraw(uint8_t toolIndex, int16_t * temp, bool skipHeader)
 }
 
 // Show/draw fan in a standard menu
-const void fanReDraw(uint8_t fanIndex, bool skipHeader)
+void fanReDraw(uint8_t fanIndex, bool skipHeader)
 {
   char tempstr[20];
 
@@ -279,7 +299,7 @@ const void fanReDraw(uint8_t fanIndex, bool skipHeader)
 }
 
 // Show/draw extruder in a standard menu
-const void extruderReDraw(uint8_t extruderIndex, float extrusion, bool skipHeader)
+void extruderReDraw(uint8_t extruderIndex, float extrusion, bool skipHeader)
 {
   char tempstr[20];
 
@@ -300,7 +320,7 @@ const void extruderReDraw(uint8_t extruderIndex, float extrusion, bool skipHeade
 }
 
 // Show/draw percentage in a standard menu
-const void percentageReDraw(uint8_t itemIndex, bool skipHeader)
+void percentageReDraw(uint8_t itemIndex, bool skipHeader)
 {
   char tempstr[20];
 
@@ -325,29 +345,25 @@ const void percentageReDraw(uint8_t itemIndex, bool skipHeader)
 }
 
 // Edit an integer value in a standard menu
-const int16_t editIntValue(int16_t minValue, int16_t maxValue, int16_t resetValue, int16_t value)
+int32_t editIntValue(int32_t minValue, int32_t maxValue, int32_t resetValue, int32_t value)
 {
-  int16_t val;
+  int32_t val;
   char tempstr[30];
 
   sprintf(tempstr, "Min:%i | Max:%i", minValue, maxValue);
-
   val = numPadInt((uint8_t *) tempstr, value, resetValue, false);
-  val = NOBEYOND(minValue, val, maxValue);
 
-  return val;
+  return NOBEYOND(minValue, val, maxValue);
 }
 
 // Edit a float value in a standard menu
-const float editFloatValue(float minValue, float maxValue, float resetValue, float value)
+float editFloatValue(float minValue, float maxValue, float resetValue, float value)
 {
   float val;
   char tempstr[30];
 
   sprintf(tempstr, "Min:%.2f | Max:%.2f", minValue, maxValue);
-
   val = numPadFloat((uint8_t *) tempstr, value, resetValue, true);
-  val = NOBEYOND(minValue, val, maxValue);
 
-  return val;
+  return NOBEYOND(minValue, val, maxValue);
 }

@@ -247,6 +247,7 @@ void hostActionCommands(void)
     {
       addNotification(DIALOG_TYPE_INFO, (char*)echomagic, (char*)dmaL2Cache + ack_index, false);
     }
+
     if (infoMenu.menu[infoMenu.cur] != menuStatus)  // don't show it when in menuStatus
     {
       uint16_t index = ack_index;
@@ -356,11 +357,11 @@ void parseACK(void)
     syncL2CacheFromL1(SERIAL_PORT);
     infoHost.rx_ok[SERIAL_PORT] = false;
 
-  #ifdef SERIAL_DEBUG_PORT
-    // dump raw serial data received to debug port
-    Serial_Puts(SERIAL_DEBUG_PORT, "<<");
-    Serial_Puts(SERIAL_DEBUG_PORT, dmaL2Cache);
-  #endif
+    #ifdef SERIAL_DEBUG_PORT
+      // dump raw serial data received to debug port
+      Serial_Puts(SERIAL_DEBUG_PORT, "<<");
+      Serial_Puts(SERIAL_DEBUG_PORT, dmaL2Cache);
+    #endif
 
     if (infoHost.connected == false)  // Not connected to printer
     {
@@ -551,19 +552,9 @@ void parseACK(void)
       // parse and store M710, controller fan
       else if (ack_seen("M710"))
       {
-        uint8_t i = 0;
-        if (ack_seen("S"))
-        {
-          i = fanGetTypID(0, FAN_TYPE_CTRL_S);
-          fanSetCurSpeed(i, ack_value());
-          fanQuerySetWait(false);
-        }
-        if (ack_seen("I"))
-        {
-          i = fanGetTypID(0, FAN_TYPE_CTRL_I);
-          fanSetCurSpeed(i, ack_value());
-          fanQuerySetWait(false);
-        }
+        if (ack_seen("S")) fanSetCurSpeed(MAX_COOLING_FAN_COUNT, ack_value());
+        if (ack_seen("I")) fanSetCurSpeed(MAX_COOLING_FAN_COUNT + 1, ack_value());
+        ctrlFanQuerySetWait(false);
       }
       // parse pause message
       else if (!infoMachineSettings.promptSupport && ack_seen("paused for user"))
@@ -600,12 +591,12 @@ void parseACK(void)
         if (infoMachineSettings.firmwareType != FW_REPRAPFW)
         {
           // Marlin
-          fileEndString = " Size:"; // File opened: 1A29A~1.GCO Size: 6974
+          fileEndString = " Size:";  // File opened: 1A29A~1.GCO Size: 6974
         }
         else
         {
           // RRF
-          ack_seen("result\":\"0:/gcodes/"); // {"key":"job.file.fileName","flags": "","result":"0:/gcodes/pig-4H.gcode"}
+          ack_seen("result\":\"0:/gcodes/");  // {"key":"job.file.fileName","flags": "","result":"0:/gcodes/pig-4H.gcode"}
           fileEndString = "\"";
         }
         uint16_t start_index = ack_index;
