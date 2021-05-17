@@ -253,7 +253,7 @@ static inline void toggleInfo(void)
     speedQuery();
 
     if (infoFile.source >= BOARD_SD)
-      coordinateQuery();
+      coordinateQuery(TOGGLE_TIME / 1000);
 
     if (!hasFilamentData && isPrinting())
       updatePrintUsedFilament();
@@ -488,7 +488,10 @@ void menuPrinting(void)
       case KEY_ICON_4:
         if (isPrinting())
         {
-          printPause(!isPaused(), PAUSE_NORMAL);
+          if (!isHostDialog())
+            printPause(!isPaused(), PAUSE_NORMAL);
+          else
+            addToast(DIALOG_TYPE_ERROR, (char *)textSelect(LABEL_BUSY));
         }
         #ifndef TFT70_V3_0
           else

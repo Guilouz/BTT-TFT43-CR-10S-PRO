@@ -250,7 +250,7 @@ static inline void toggleTool(void)
     drawTemperature();
 
     // gcode queries must be call after drawTemperature
-    coordinateQuery();
+    coordinateQuery(UPDATE_TOOL_TIME / 1000);
     speedQuery();
     ctrlFanQuery();
   }
@@ -307,8 +307,8 @@ void menuStatus(void)
           SET_SPEEDMENUINDEX(1);
           infoMenu.menu[++infoMenu.cur] = menuSpeed;
           break;
-
       #endif
+
       case KEY_MAINMENU:
         infoMenu.menu[++infoMenu.cur] = menuMain;
         break;
@@ -326,4 +326,6 @@ void menuStatus(void)
     toggleTool();
     loopProcess();
   }
+  // disable position auto report
+  coordinateQuery(0);
 }

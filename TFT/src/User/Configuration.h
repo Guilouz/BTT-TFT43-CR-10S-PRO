@@ -240,7 +240,7 @@
 // Z Fade limits
 #define Z_FADE_MIN_VALUE      0.0f
 #define Z_FADE_MAX_VALUE     20.0f
-#define Z_FADE_DEFAULT_VALUE 10.0f
+#define Z_FADE_DEFAULT_VALUE 2.0f
 
 // Probe Offset limits
 #define PROBE_Z_OFFSET_MIN_VALUE     -20.0f

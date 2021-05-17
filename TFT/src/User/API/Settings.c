@@ -41,7 +41,7 @@ void infoSettingsReset(void)
   infoSettings.terminalACK            = DISABLED;
   infoSettings.persistent_info        = ENABLED;
   infoSettings.file_listmode          = ENABLED;
-  infoSettings.files_sort_by         = SORT_DATE_NEW_FIRST;
+  infoSettings.files_sort_by          = SORT_DATE_NEW_FIRST;
   infoSettings.ack_notification       = ACK_NOTIFICATION_STYLE;
   infoSettings.notification_m117      = DISABLED;
   infoSettings.emulate_m600           = EMULATE_M600;
@@ -178,6 +178,7 @@ void initMachineSetting(void)
   infoMachineSettings.firmwareType            = FW_NOT_DETECTED;  // set fimware type to not_detected to avoid repeated ABL gcode on mode change
   infoMachineSettings.EEPROM                  = ENABLED;
   infoMachineSettings.autoReportTemp          = DISABLED;
+  infoMachineSettings.autoReportPos           = DISABLED;
   infoMachineSettings.leveling                = BL_DISABLED;
   infoMachineSettings.zProbe                  = ENABLED;
   infoMachineSettings.levelingData            = ENABLED;
@@ -221,6 +222,7 @@ void setupMachine(void)
   {
     infoMachineSettings.EEPROM                  = ENABLED;
     infoMachineSettings.autoReportTemp          = DISABLED;
+    infoMachineSettings.autoReportPos           = DISABLED;
     infoMachineSettings.leveling                = ENABLED;
     infoMachineSettings.zProbe                  = ENABLED;
     infoMachineSettings.levelingData            = ENABLED;
