@@ -214,7 +214,7 @@ void request_M25(void)
  *
  * ->  SD printing byte 123/12345
  * ->  Not SD printing
- **/
+ */
 void request_M27(uint8_t seconds)
 {
   if (infoMachineSettings.autoReportSDStatus == 1)
