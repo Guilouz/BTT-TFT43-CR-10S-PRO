@@ -244,13 +244,11 @@ void hostActionCommands(void)
   {
     uint16_t index = ack_index;  // save the current index for further usage
 
-    #if defined(ENABLE_SLICER_REMAINING_TIME)
-      if (ack_seen("Time Left"))
-      {
-        parsePrintRemainingTime((char *)dmaL2Cache + ack_index);
-      }
-      else
-    #endif
+    if (ack_seen("Time Left"))
+    {
+      parsePrintRemainingTime((char *)dmaL2Cache + ack_index);
+    }
+    else
     {
       statusScreen_setMsg((uint8_t *)echomagic, (uint8_t *)dmaL2Cache + index);  // always display the notification on status screen
 
@@ -1137,9 +1135,9 @@ void parseACK(void)
       {
         infoMachineSettings.babyStepping = ack_value();
       }
-      else if (ack_seen("Cap:PROGRESS:"))
+      else if (ack_seen("Cap:BUILD_PERCENT:"))  // M73 support. Required "LCD_SET_PROGRESS_MANUALLY" in Marlin
       {
-        infoMachineSettings.progress = ack_value();
+        infoMachineSettings.buildPercent = ack_value();
       }
       else if (ack_seen("Cap:CHAMBER_TEMPERATURE:"))
       {
