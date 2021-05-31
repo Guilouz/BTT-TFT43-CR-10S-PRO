@@ -2,7 +2,6 @@
 #define _LANGUAGE_CA_H_
 
     // config.ini Parameter Settings / Feature Settings
-    #define STRING_STATUS_SCREEN          "Enable Status Screen"
     #define STRING_BAUDRATE               "Velocitat de transmissió"
     #define STRING_LANGUAGE               "Català"
     #define STRING_ROTATE_UI              "Rotar"

@@ -2,7 +2,6 @@
 #define _LANGUAGE_SK_H_
 
     // config.ini Parameter Settings / Feature Settings
-    #define STRING_STATUS_SCREEN          "Enable Status Screen"
     #define STRING_BAUDRATE               "BaudRate"
     #define STRING_LANGUAGE               "Slovensky"
     #define STRING_ROTATE_UI              "Otočiť"

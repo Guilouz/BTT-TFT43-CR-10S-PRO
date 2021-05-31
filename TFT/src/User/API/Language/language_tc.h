@@ -2,7 +2,6 @@
 #define _LANGUAGE_TC_H_
 
     // config.ini Parameter Settings / Feature Settings
-    #define STRING_STATUS_SCREEN          "Enable Status Screen"
     #define STRING_BAUDRATE               "串列傳輸速率"
     #define STRING_LANGUAGE               "正體中文"
     #define STRING_ROTATE_UI              "顯示方向"

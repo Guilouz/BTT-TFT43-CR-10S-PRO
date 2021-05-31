@@ -88,9 +88,13 @@ void getPrintTimeDetail(uint8_t * hour, uint8_t * min, uint8_t * sec)
 
 void setPrintRemainingTime(int32_t remainingTime)
 {
+  float speedFactor = (float) (speedGetCurPercent(0)) / 100;  // speed (feed rate) factor (e.g. 50% -> 0.5)
+
   // Cura Slicer put a negative value at the end instead of zero
-  if (remainingTime < 0)
+  if (remainingTime < 0 || speedFactor <= 0.0f)
     remainingTime = 0;
+  else
+    remainingTime = remainingTime / speedFactor;  // remaining time = slicer remaining time / speed factor
 
   infoPrinting.remainingTime = remainingTime;
 }
@@ -134,16 +138,15 @@ void setPrintProgress(float cur, float size)
 void setPrintProgressPercentage(uint8_t percentage)
 {
   infoPrinting.progressFromSlicer = true;  // set to true to force a progress controlled by slicer
-  infoPrinting.prevProgress = infoPrinting.progress;
   infoPrinting.progress = percentage;
 }
 
 bool updatePrintProgress(void)
 {
+  uint8_t prevProgress = infoPrinting.prevProgress;
+
   if (!infoPrinting.progressFromSlicer)  // avoid to update progress if it is controlled by slicer
   {
-    infoPrinting.prevProgress = infoPrinting.progress;
-
     // in case not printing or a wrong size was set, we consider progress as 100%
     if (infoPrinting.size == 0)  // avoid a division for 0 (a crash) and set progress to 100%
       infoPrinting.progress = 100;
@@ -151,8 +154,12 @@ bool updatePrintProgress(void)
       infoPrinting.progress = MIN((uint64_t)infoPrinting.cur * 100 / infoPrinting.size, 100);
   }
 
-  if (infoPrinting.progress != infoPrinting.prevProgress)
+  if (infoPrinting.progress != prevProgress)
+  {
+    infoPrinting.prevProgress = infoPrinting.progress;
+
     return true;
+  }
 
   return false;
 }
@@ -373,7 +380,7 @@ void printEnd(void)
   powerFailedClose();
   powerFailedDelete();
 
-  infoPrinting.cur = infoPrinting.size;  // always update the print progress to 100% even if the print was abaorted
+  infoPrinting.cur = infoPrinting.size;  // always update the print progress to 100% even if the print terminated
   infoPrinting.printing = infoPrinting.pause = false;
   preparePrintSummary();  // update print summary. infoPrinting are used
 
@@ -433,14 +440,13 @@ void printAbort(void)
         request_M0();  // M524 is not supportet in reprap firmware
       }
 
-      setDialogText(LABEL_SCREEN_INFO, LABEL_BUSY, LABEL_BACKGROUND, LABEL_BACKGROUND);
-      showDialog(DIALOG_TYPE_INFO, NULL, NULL, NULL);
-
-      do
+      if (infoHost.printing)
       {
-        loopProcess();  // NOTE: it is executed at leat one time to print the above splash screen
+        setDialogText(LABEL_SCREEN_INFO, LABEL_BUSY, LABEL_BACKGROUND, LABEL_BACKGROUND);
+        showDialog(DIALOG_TYPE_INFO, NULL, NULL, NULL);
+
+        loopProcessToCondition(&hostPrintingConditionCallback);  // wait for the printer to settle down
       }
-      while (infoHost.printing == true);  // wait for the printer to settle down
       break;
 
     case TFT_UDISK:
@@ -484,9 +490,7 @@ bool printPause(bool isPause, PAUSE_TYPE pauseType)
     case TFT_UDISK:
     case TFT_SD:
       if (infoPrinting.pause == true && pauseType == PAUSE_M0)
-      {
-        while (infoCmd.count != 0) {loopProcess();}
-      }
+        loopProcessToCondition(&usedQueueConditionCallback);  // wait for the communication to be clean
 
       static COORDINATE tmp;
       bool isCoorRelative = coorGetRelative();
@@ -602,7 +606,7 @@ void setPrintAbort(void)
     coordinateQuery(0);
   }
 
-  infoPrinting.cur = infoPrinting.size;
+  infoPrinting.cur = infoPrinting.size;  // always update the print progress to 100% even if the print was abaorted
   infoPrinting.printing = infoPrinting.pause = false;
 }
 

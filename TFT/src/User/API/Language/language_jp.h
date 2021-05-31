@@ -2,7 +2,6 @@
 #define _LANGUAGE_JP_H_
 
     // config.ini Parameter Settings / Feature Settings
-    #define STRING_STATUS_SCREEN          "Enable Status Screen"
     #define STRING_BAUDRATE               "ポートレート"
     #define STRING_LANGUAGE               "日本語"
     #define STRING_ROTATE_UI              "回転UI"

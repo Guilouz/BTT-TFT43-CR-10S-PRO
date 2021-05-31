@@ -2,7 +2,6 @@
 #define _LANGUAGE_TR_H_
 
     // config.ini Parameter Settings / Feature Settings
-    #define STRING_STATUS_SCREEN          "Durum Ekranı Aktif"
     #define STRING_BAUDRATE               "BaudRate"
     #define STRING_LANGUAGE               "Türkçe"
     #define STRING_ROTATE_UI              "Döndür"

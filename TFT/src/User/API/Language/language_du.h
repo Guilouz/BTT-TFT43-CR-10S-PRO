@@ -2,7 +2,6 @@
 #define _LANGUAGE_DU_H_
 
     // config.ini Parameter Settings / Feature Settings
-    #define STRING_STATUS_SCREEN          "Enable Status Screen"
     #define STRING_BAUDRATE               "Baudsnelheid"
     #define STRING_LANGUAGE               "Dutch"
     #define STRING_ROTATE_UI              "Draai UI"

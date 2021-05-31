@@ -3,7 +3,6 @@
 
     // config.ini Parameter Settings / Feature Settings
     #define STRING_STATUS_SCREEN          "Enable Status Screen"
-    #define STRING_STATUS_SCREEN          "Enable Status Screen"
     #define STRING_BAUDRATE               "Baudrate"
     #define STRING_LANGUAGE               "Українська"
     #define STRING_ROTATE_UI              "Повернути інтерфейс"

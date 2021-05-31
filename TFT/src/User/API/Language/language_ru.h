@@ -2,7 +2,6 @@
 #define _LANGUAGE_RU_H_
 
     // config.ini Parameter Settings / Feature Settings
-    #define STRING_STATUS_SCREEN          "Включить экран состояния"
     #define STRING_BAUDRATE               "Скорость"
     #define STRING_LANGUAGE               "Русский"
     #define STRING_ROTATE_UI              "Переворот"

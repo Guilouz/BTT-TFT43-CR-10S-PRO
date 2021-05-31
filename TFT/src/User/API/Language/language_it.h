@@ -2,7 +2,6 @@
 #define _LANGUAGE_IT_H_
 
     // config.ini Parameter Settings / Feature Settings
-    #define STRING_STATUS_SCREEN          "Abilita scherm. di stato"
     #define STRING_BAUDRATE               "Baudrate"
     #define STRING_LANGUAGE               "Italiano"
     #define STRING_ROTATE_UI              "Ruota"
