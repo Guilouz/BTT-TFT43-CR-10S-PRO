@@ -191,7 +191,7 @@ Cette fonctionnalité permet d'obtenir le temps restant de l'impression ainsi qu
 Lors de l'impression depuis la carte SD intégrée à la carte mère il est préférable d'utiliser la fonction M117, dans les autres cas il est préférable d'utiliser la fonction M73.
 
 1. Dans Cura, rendez-vous dans **Extensions - Post-Traitement - Modifier le Gcode**
-2. Cliquez sur **Ajouter un ccript** et sélectionnez **Display Progress On LCD** et configurez comme suit :
+2. Cliquez sur **Ajouter un script** et sélectionnez **Display Progress On LCD** et configurez comme suit :
 
 - Configuration M117 :
 ![Capture d’écran 2021-06-01 à 10 45 20](https://user-images.githubusercontent.com/12702322/120294498-8b38ca00-c2c6-11eb-92b9-8368eac49a72.jpg)
