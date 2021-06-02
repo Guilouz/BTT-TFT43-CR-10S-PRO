@@ -20,7 +20,7 @@ const GUI_RECT rect_of_keysIN[TM_RECT_COUNT] = {
   {2*ICON_WIDTH+2*SPACE_X+START_X,  1*ICON_HEIGHT+1*SPACE_Y+ICON_START_Y,  3*ICON_WIDTH+2*SPACE_X+START_X,  2*ICON_HEIGHT+1*SPACE_Y+ICON_START_Y},
   {3*ICON_WIDTH+3*SPACE_X+START_X,  1*ICON_HEIGHT+1*SPACE_Y+ICON_START_Y,  4*ICON_WIDTH+3*SPACE_X+START_X,  2*ICON_HEIGHT+1*SPACE_Y+ICON_START_Y},
 
-  //8 labels area
+  // 8 labels area
   {0*SPACE_X_PER_ICON,  1*ICON_HEIGHT+0*SPACE_Y+ICON_START_Y,  1*SPACE_X_PER_ICON,  1*ICON_HEIGHT+1*SPACE_Y+ICON_START_Y},
   {1*SPACE_X_PER_ICON,  1*ICON_HEIGHT+0*SPACE_Y+ICON_START_Y,  2*SPACE_X_PER_ICON,  1*ICON_HEIGHT+1*SPACE_Y+ICON_START_Y},
   {2*SPACE_X_PER_ICON,  1*ICON_HEIGHT+0*SPACE_Y+ICON_START_Y,  3*SPACE_X_PER_ICON,  1*ICON_HEIGHT+1*SPACE_Y+ICON_START_Y},
@@ -713,7 +713,7 @@ KEY_VALUES menuKeyGetValue(void)
   }
 }
 
-//Get the top left point of the corresponding icon position)
+// Get the top left point of the corresponding icon position)
 GUI_POINT getIconStartPoint(int index)
 {
   GUI_POINT p = {curRect[index].x0, curRect[index].y0};
@@ -793,7 +793,7 @@ GUI_POINT getIconStartPoint(int index)
       }
     }
   }
-#endif // SMART_HOME
+#endif  // SMART_HOME
 
 void loopBackEnd(void)
 {
@@ -838,7 +838,7 @@ void loopBackEnd(void)
   if (infoMenu.menu[infoMenu.cur] != menuMarlinMode)
   #endif
   {
-    loopCheckEncoderSteps();  //check change in encoder steps
+    loopCheckEncoderSteps();  // check change in encoder steps
   }
 #endif
 
@@ -894,12 +894,12 @@ void menuDummy(void)
   infoMenu.cur--;
 }
 
-void loopProcessToCondition(bool (*conditionCallback)(void))
+void loopProcessToCondition(CONDITION_CALLBACK condCallback)
 {
   uint8_t curMenu = infoMenu.cur;
   bool invokedUI = false;
 
-  while (conditionCallback())  // loop until the condition is no more satisfied
+  while (condCallback())  // loop until the condition is no more satisfied
   {
     loopProcess();
 
