@@ -264,10 +264,13 @@ void hostActionCommands(void)
   }
   else if (ack_seen(":paused") || ack_seen(":pause"))
   {
-    if (ack_seen(":paused"))  // if paused with ADVANCED_PAUSE_FEATURE enabled in Marlin (:paused),
-      hostDialog = true;      // disable Resume/Pause button in the Printing menu
-    //else                      // otherwise, if ADVANCED_PAUSE_FEATURE is disabled in Marlin (:pause),
-    //  hostDialog = false;     // enable Resume/Pause button in the Printing menu
+    if (infoMachineSettings.firmwareType == FW_MARLIN)
+    {
+      if (ack_seen(":paused"))  // if paused with ADVANCED_PAUSE_FEATURE enabled in Marlin (:paused),
+        hostDialog = true;      // disable Resume/Pause button in the Printing menu
+      //else                      // otherwise, if ADVANCED_PAUSE_FEATURE is disabled in Marlin (:pause),
+      //  hostDialog = false;     // enable Resume/Pause button in the Printing menu
+    }
 
     // pass value "false" to let Marlin report when the host is not
     // printing (when notification ack "Not SD printing" is caught)
@@ -562,6 +565,15 @@ void parseACK(void)
           fanSetCurSpeed(i, ack_value());
         }
       }
+      // parse and store flow rate percentage in case of RepRapFirmware
+      else if ((infoMachineSettings.firmwareType == FW_REPRAPFW) && ack_seen("fanPercent\":["))
+      {
+        for (uint8_t i = 0; i < infoSettings.fan_count; i++)
+        {
+          fanSetPercent(i, ack_value() + 0.5f);
+          ack_continue_seen(",");
+        }
+      }
       // parse and store M710, controller fan
       else if (ack_seen("M710"))
       {
@@ -729,6 +741,16 @@ void parseACK(void)
       }
       // parse M303, PID Autotune failed message in case of Smoothieware
       else if ((infoMachineSettings.firmwareType == FW_SMOOTHIEWARE) && ack_seen("// WARNING: Autopid did not resolve within"))
+      {
+        pidUpdateStatus(false);
+      }
+      // parse M303, PID Autotune completed message in case of RRF
+      else if ((infoMachineSettings.firmwareType == FW_REPRAPFW) && ack_seen("Auto tuning heater") && ack_seen("completed"))
+      {
+        pidUpdateStatus(true);
+      }
+      // parse M303, PID Autotune failed message in case of RRF
+      else if ((infoMachineSettings.firmwareType == FW_REPRAPFW) && (ack_seen("Error: M303") || (ack_seen("Auto tune of heater") && ack_seen("failed"))))
       {
         pidUpdateStatus(false);
       }

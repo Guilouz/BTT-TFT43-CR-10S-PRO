@@ -74,6 +74,7 @@ void infoSettingsReset(void)
   infoSettings.m27_active             = M27_WATCH_OTHER_SOURCES;
   infoSettings.longFileName           = AUTO;  //ENABLED / DISABLED / AUTO
   infoSettings.fan_percentage         = SHOW_FAN_PERCENTAGE;
+  infoSettings.prog_disp_type         = ELAPSED_REMAINING;
 
   infoSettings.pause_retract_len      = NOZZLE_PAUSE_RETRACT_LENGTH;
   infoSettings.resume_purge_len       = NOZZLE_RESUME_PURGE_LENGTH;
@@ -236,6 +237,8 @@ void setupMachine(void)
   {
     mustStoreCmd("M555 P2\n");  //  Set RRF compatibility behaves similar to 2: Marlin
   }
+  mustStoreCmd("M82\n");  // Set extruder to absolute mode
+  mustStoreCmd("G90\n");  // Set to Absolute Positioning
 }
 
 float flashUsedPercentage(void)
