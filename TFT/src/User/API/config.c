@@ -794,8 +794,8 @@ void parseConfigKey(uint16_t index)
       break;
 
     case C_INDEX_PROG_DISP_TYPE:
-      SET_VALID_INT_VALUE(infoSettings.prog_disp_type, 0, 2);
-      break;
+        SET_VALID_INT_VALUE(infoSettings.prog_disp_type, 0, 2);
+        break;
 
     case C_INDEX_PAUSE_RETRACT:
       if (key_seen("R")) SET_VALID_FLOAT_VALUE(infoSettings.pause_retract_len, MIN_RETRACT_LIMIT, MAX_RETRACT_LIMIT);
@@ -857,7 +857,7 @@ void parseConfigKey(uint16_t index)
       strcpy(pchr, strrchr(cur_line, ':') + 1);
       int utf8len = getUTF8Length((uint8_t *)pchr);
       int bytelen = strlen(pchr) + 1;
-      if (inLimit(utf8len, NAME_MIN_LENGTH, MAX_STRING_LENGTH) && inLimit(bytelen, NAME_MIN_LENGTH, MAX_GCODE_LENGTH))
+      if (inLimit(utf8len, NAME_MIN_LENGTH, MAX_STRING_LENGTH) && inLimit(bytelen, NAME_MIN_LENGTH, MAX_STRING_LENGTH))
         strcpy(configPreheatStore->preheat_name[index - C_INDEX_PREHEAT_NAME_1], pchr);
       break;
     }
