@@ -1,6 +1,6 @@
 #ifndef _CONFIGURATION_H_
 #define _CONFIGURATION_H_
-#define CONFIG_VERSION 20210605
+#define CONFIG_VERSION 20210711
 
 //===========================================================================
 //============================ Developer Settings ===========================
@@ -170,6 +170,9 @@
 //===========================================================================
 //=========================== Machine Settings ==============================
 //===========================================================================
+
+#define DELTA_PRINTER false  // Set to true if printer is a Delta. Default: false.
+#define REMOVABLE_PROBE false // Set to true if printer have a removable probe. Default: false.
 
 #define HOTEND_NUM      1  // set in 1~6
 #define EXTRUDER_NUM    1  // set in 1~6
@@ -355,7 +358,7 @@
  *
  * NOTE: Enable it, in case Marlin firmware does not properly support M600 on the mainboard.
  */
-#define EMULATE_M600 true  // To enabled: true | To disabled: false (Default: true)
+#define EMULATE_M600 false  // To enabled: true | To disabled: false (Default: true)
 
 /**
  * M601: Pause Print
