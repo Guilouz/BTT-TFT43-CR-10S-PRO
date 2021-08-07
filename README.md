@@ -128,12 +128,12 @@ Pour éditer le fichier **config.ini** suivez les instructions [ici](config_inst
 |                      Unified Material (thème par défaut)                      | The Round Miracle par **[Acenotass](https://github.com/Acenotass)** |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![Unified Material](https://user-images.githubusercontent.com/54359396/98742038-03cd4d00-23ae-11eb-9552-36dc02fe66f4.png) | ![The Round Miracle](https://user-images.githubusercontent.com/54359396/99251566-d77e5a00-280d-11eb-9c7a-0e7c0111eedd.png) |
-| Remplacez le dossier 'TFT43' par celui-ci : [TFT43_Unified_Material.zip](https://github.com/Guilouz/BTT-TFT43-Sidewinder-X1/files/6909177/TFT43_Unified_Material.zip) | Remplacez le dossier 'TFT43' par celui-ci : [TFT43_The_Round_Miracle.zip](https://github.com/Guilouz/BTT-TFT43-Sidewinder-X1/files/6909088/TFT43_The_Round_Miracle.zip) |
+| Remplacez le dossier 'TFT43' par celui-ci : [TFT43_Unified_Material.zip](https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/6949569/TFT43_Unified_Material.zip) | Remplacez le dossier 'TFT43' par celui-ci : [TFT43_The_Round_Miracle.zip](https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/6949570/TFT43_The_Round_Miracle.zip) |
 
 | Hybrid Red Material par **[AntoszHUN](https://github.com/AntoszHUN)** | Hybrid Mono Material par **[bepstein111](https://github.com/bepstein111)** |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![Hybrid Red Material](https://user-images.githubusercontent.com/54359396/98869176-a995c000-2471-11eb-94da-a0bc41abf3e9.png) | ![Hybrid Mono Material](https://user-images.githubusercontent.com/54359396/110254523-d5dccb80-7f8f-11eb-86a5-2d52ecd7ca4d.png) |
-| Remplacez le dossier 'TFT43' par celui-ci : [TFT43_Hybrid_Red_Material.zip](https://github.com/Guilouz/BTT-TFT43-Sidewinder-X1/files/6909096/TFT43_Hybrid_Red_Material.zip) | Remplacez le dossier 'TFT43' par celui-ci : [TFT43_Hybrid_Mono_Material.zip](https://github.com/Guilouz/BTT-TFT43-Sidewinder-X1/files/6909100/TFT43_Hybrid_Mono_Material.zip) |
+| Remplacez le dossier 'TFT43' par celui-ci : [TFT43_Hybrid_Red_Material.zip](https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/6949571/TFT43_Hybrid_Red_Material.zip) | Remplacez le dossier 'TFT43' par celui-ci : [TFT43_Hybrid_Mono_Material.zip](https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/6949572/TFT43_Hybrid_Mono_Material.zip) |
 
 <br />
 
