@@ -1,5 +1,8 @@
 #include "parseACK.h"
 #include "includes.h"
+#include "parseACKJson.hpp"
+
+#define ACK_MAX_SIZE 512
 
 char dmaL2Cache[ACK_MAX_SIZE];
 static uint16_t ack_index = 0;
@@ -11,7 +14,6 @@ static const char warningmagic[] = "Warning:";                     // RRF warnin
 static const char messagemagic[] = "message";                      // RRF message in Json format
 static const char errorZProbe[] = "ZProbe triggered before move";  // smoothieware message
 
-bool portSeen[_UART_CNT] = {false, false, false, false, false, false};
 bool hostDialog = false;
 
 struct HOST_ACTION
@@ -57,12 +59,16 @@ const ECHO knownEcho[] = {
   {ECHO_NOTIFY_NONE, "Unknown command: \"M150"},  // M150
 };
 
-// uint8_t forceIgnore[ECHO_ID_COUNT] = {0};
+//uint8_t forceIgnore[ECHO_ID_COUNT] = {0};
+
+//void setIgnoreEcho(ECHO_ID msgId, bool state)
+//{
+//  forceIgnore[msgId] = state;
+//}
 
 void setCurrentAckSrc(uint8_t src)
 {
   ack_cur_src = src;
-  portSeen[src] = true;
 }
 
 static bool ack_seen(const char * str)
@@ -179,11 +185,6 @@ void ackPopupInfo(const char * info)
     addNotification(DIALOG_TYPE_ERROR, (char *)info, (char *)dmaL2Cache + ack_index, show_dialog);
   }
 }
-
-//void setIgnoreEcho(ECHO_ID msgId, bool state)
-//{
-//  forceIgnore[msgId] = state;
-//}
 
 bool processKnownEcho(void)
 {
@@ -422,6 +423,7 @@ void parseACK(void)
         storeCmd("M211\n");  // retrieve the software endstops state
       }
       infoHost.connected = true;
+      requestCommandInfo.inJson = false;
     }
 
     // Onboard sd Gcode command response
@@ -446,6 +448,7 @@ void parseACK(void)
         BUZZER_PLAY(sound_error);
         goto parse_end;
       }
+      requestCommandInfo.inJson = false;
     }
 
     if (requestCommandInfo.inResponse)
@@ -466,9 +469,23 @@ void parseACK(void)
         ackPopupInfo(errormagic);
       }
       infoHost.wait = false;
+      requestCommandInfo.inJson = false;
       goto parse_end;
     }
     // Onboard sd Gcode command response end
+
+    if (!requestCommandInfo.inWaitResponse && !requestCommandInfo.inResponse && infoMachineSettings.firmwareType == FW_REPRAPFW)
+    {
+      if (strchr(dmaL2Cache, '{') != NULL)
+      {
+        requestCommandInfo.inJson = true;
+      }
+    }
+
+    if (requestCommandInfo.inJson)
+    {
+      parseACKJson(dmaL2Cache);
+    }
 
     if (ack_cmp("ok\n"))
     {
@@ -568,15 +585,6 @@ void parseACK(void)
         if (ack_seen("S"))
         {
           fanSetCurSpeed(i, ack_value());
-        }
-      }
-      // parse and store flow rate percentage in case of RepRapFirmware
-      else if ((infoMachineSettings.firmwareType == FW_REPRAPFW) && ack_seen("fanPercent\":["))
-      {
-        for (uint8_t i = 0; i < infoSettings.fan_count; i++)
-        {
-          fanSetPercent(i, ack_value() + 0.5f);
-          ack_continue_seen(",");
         }
       }
       // parse and store M710, controller fan
@@ -1287,18 +1295,20 @@ void parseACK(void)
     {
       Serial_Puts(ack_cur_src, dmaL2Cache);
     }
-    else if (!ack_seen("ok") || ack_seen("T:") || ack_seen("T0:"))
-    {
-      // make sure we pass on spontaneous messages to all connected ports (since these can come unrequested)
-      for (int port = 0; port < _UART_CNT; port++)
+    #ifdef SERIAL_PORT_2
+      else if (!ack_seen("ok") || ack_seen("T:") || ack_seen("T0:"))  // if a spontaneous ACK message
       {
-        if (port != SERIAL_PORT && portSeen[port])
+        // pass on the spontaneous ACK message to all the extra serial ports (since these messages come unrequested)
+        for (uint8_t i = 0; i < PORT_COUNT; i++)
         {
-          // pass on this one to anyone else who might be listening
-          Serial_Puts(port, dmaL2Cache);
+          if (extraSerialPort[i].activePort)  // if the port is connected to an active device (a device that already sent data to the TFT)
+          {
+            // pass on the ACK message to the port
+            Serial_Puts(extraSerialPort[i].port, dmaL2Cache);
+          }
         }
       }
-    }
+    #endif
 
     if (avoid_terminal != true)
     {
@@ -1310,17 +1320,24 @@ void parseACK(void)
 void parseRcvGcode(void)
 {
   #ifdef SERIAL_PORT_2
-    uint8_t i = 0;
-    for (i = 0; i < _UART_CNT; i++)
+    uint8_t port;
+
+    // scan all the extra serial ports
+    for (uint8_t i = 0; i < PORT_COUNT; i++)
     {
-      if (i != SERIAL_PORT && infoHost.rx_ok[i] == true)
+      port = extraSerialPort[i].port;
+
+      if (infoHost.rx_ok[port] == true)
       {
-        infoHost.rx_ok[i] = false;
-        while (dmaL1NotEmpty(i))
+        infoHost.rx_ok[port] = false;
+
+        while (dmaL1NotEmpty(port))
         {
-          syncL2CacheFromL1(i);
-          storeCmdFromUART(i, dmaL2Cache);
+          syncL2CacheFromL1(port);
+          storeCmdFromUART(port, dmaL2Cache);
         }
+
+        extraSerialPort[i].activePort = true;
       }
     }
   #endif

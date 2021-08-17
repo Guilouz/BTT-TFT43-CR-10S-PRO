@@ -1,7 +1,7 @@
 #ifndef _CONFIGURATION_H_
 #define _CONFIGURATION_H_
 
-#define CONFIG_VERSION 20210807
+#define CONFIG_VERSION 20210815
 
 //====================================================================================================
 //=============================== Settings Configurable On config.ini ================================
@@ -12,10 +12,10 @@
 //================================================================================
 
 /**
- * Enable Multi-Serials
- * Multi-Serials connected to ESP3D, OctoPrint, Other TFT, etc.
- * Disable the serial port when it is not in use and floating.
- * Avoid the serial port to receive the wrong data because of electromagnetic interference.
+ * Enable Multi-Serial Ports
+ * Serial ports connected to devices such as ESP3D, OctoPrint, other TFTs etc.
+ * Disable the serial port when it is not in use and floating to avoid to receive
+ * and process wrong data due to electromagnetic interference (EMI).
  *
  *   Options: [0: Disable all multi-serials,
  *             1: Enable SERIAL_PORT_2 alone,
@@ -271,8 +271,8 @@
 #define NOZZLE_PAUSE_Y_POSITION     (Y_MIN_POS + 10)  // (mm) Must be an integer
 #define NOZZLE_PAUSE_Z_RAISE                      20  // (mm)
 #define NOZZLE_PAUSE_E_FEEDRATE                  600  // (mm/min) retract & purge feedrate
-#define NOZZLE_PAUSE_XY_FEEDRATE                3000  // (mm/min) X and Y axes feedrate
-#define NOZZLE_PAUSE_Z_FEEDRATE                  600  // (mm/min) Z axis feedrate
+#define NOZZLE_PAUSE_XY_FEEDRATE                300  // (mm/min) X and Y axes feedrate
+#define NOZZLE_PAUSE_Z_FEEDRATE                  300  // (mm/min) Z axis feedrate
 
 /**
  * Manual Leveling
@@ -281,8 +281,8 @@
 #define LEVELING_EDGE_DISTANCE        35  // Inset distance from bed's edge for calculating leveling point location
 #define LEVELING_POINT_Z            0.0f  // Z-axis position when nozzle stays for leveling
 #define LEVELING_POINT_MOVE_Z      10.0f  // Z-axis position when nozzle move to next point
-#define LEVELING_POINT_XY_FEEDRATE  3000  // (mm/min) X and Y axes move feedrate
-#define LEVELING_POINT_Z_FEEDRATE    600  // (mm/min) Z axis move feedrate
+#define LEVELING_POINT_XY_FEEDRATE  300  // (mm/min) X and Y axes move feedrate
+#define LEVELING_POINT_Z_FEEDRATE    300  // (mm/min) Z axis move feedrate
 
 #define LEVELING_EDGE_DISTANCE_DISPLAY_ID "X/Y"
 #define LEVELING_EDGE_DISTANCE_MIN           0
@@ -335,8 +335,9 @@
  * Used by the Probe Offset / Mesh Editor menu for the Z offset / Z height tuning process.
  * Z height to raise / drop after homing (G28) before starting to probe a point.
  *
- * NOTE: It MUST BE a value >= 0 (e.g. 20) for a Cartesian printer to avoid crashing into the bed.
- *       It MUST BE a value <= 0 (e.g. -50) for a Delta printer to avoid crashing into the top of the tower.
+ * NOTES:
+ *   - It MUST BE a value >= 0 (e.g. 20) for a Cartesian printer to avoid crashing into the bed.
+ *   - It MUST BE a value <= 0 (e.g. -50) for a Delta printer to avoid crashing into the top of the tower.
  */
 #define Z_RAISE_PROBING 20.0f
 
@@ -376,10 +377,10 @@
 //================================================================================
 
 /**
- * NOTE for users having a filament sensor connected to the mainboard:
- * 1) Define "FIL_SENSOR_TYPE 0" below to disable the sensor handling on the TFT.
- * 2) Configure the sensor in the firmware of your mainboard.
- * 3) Add M75 to "PRINT_START_GCODE" and M77 to "PRINT_END_GCODE" of the TFT (or your slicer).
+ * NOTES for users having a filament sensor connected to the mainboard:
+ *   1) Define "FIL_SENSOR_TYPE 0" below to disable the sensor handling on the TFT.
+ *   2) Configure the sensor in the firmware of your mainboard.
+ *   3) Add M75 to "PRINT_START_GCODE" and M77 to "PRINT_END_GCODE" of the TFT (or your slicer).
  */
 
 /**
@@ -397,6 +398,14 @@
  *   Options: [disable: 0, enable: 1]
  */
 #define FIL_RUNOUT_INVERTING 1  // Default: 1
+
+/**
+ * Filament runout sensor NC(Normal Close)
+ * Invert the logic of the sensor.
+ *
+ *   Options: [Normal Open: 0, Normal Close: 1]
+ */
+#define FIL_RUNOUT_NC 1  // Default: 1
 
 // Filament Noise Threshold
 // Pause print when filament runout is detected at least for this time period.
@@ -443,7 +452,7 @@
  * Default LCD Brightness Levels (only for TFT28/TFT35/TFT43/TFT50/TFT70 V3.0)
  * Default brightness values for LCD.
  *
- *   Options: [off: 0, 5%: 1, 10%: 2, 20%: 3, 30%: 4, 40%: 5, 50%: 6, 60%: 7, 70%: 8, 80%: 9, 90%: 10, 100%: 11]
+ *   Options: [OFF: 0, 5%: 1, 10%: 2, 20%: 3, 30%: 4, 40%: 5, 50%: 6, 60%: 7, 70%: 8, 80%: 9, 90%: 10, 100%: 11]
  */
 #define DEFAULT_LCD_BRIGHTNESS      11  // Default display brightness (Default: 11)
 #define DEFAULT_LCD_IDLE_BRIGHTNESS  6  // Display brightness when device is idle (Default: 3)
@@ -453,7 +462,7 @@
  * The LCD screen will dim to idle brightness, if the display is not touched for the
  * period of the LCD idle time.
  *
- *   Options: [off: 0, 5sec: 1, 10sec: 2, 30sec: 3, 1min: 4, 2min: 5, 5min: 6, CUSTOM: 7]
+ *   Options: [OFF: 0, 5sec: 1, 10sec: 2, 30sec: 3, 1min: 4, 2min: 5, 5min: 6, CUSTOM: 7]
  */
 #define DEFAULT_LCD_IDLE_TIME 5  // Default: 0
 
@@ -480,8 +489,8 @@
  * Up to 15 custom gcode commands that will be available in the Custom menu.
  *
  * Usage:
- *   To enable a custom command, remove "//" at the begining of custom commands label & gcode.
- *   To disable a custom command, add "//" at the begining of custom commands label & gcode.
+ *   - To enable a custom command, remove "//" at the begining of custom commands label & gcode.
+ *   - To disable a custom command, add "//" at the begining of custom commands label & gcode.
  *
  * NOTE: If the values are left blank then default name and gcode will be used.
  *
@@ -528,11 +537,11 @@
  * Gcode that runs after a print starts, ends, or canceled.
  * Enable Start/End/Cancel gcode in SETTINGS -> FEATURE menu.
  *
- * NOTE for users having a filament sensor connected to the mainboard:
- * 1) Enable the start/end gcode.
- * 2) Add the following commands to the start/end gcode:
- *    PRINT_START_GCODE: M75\n
- *    PRINT_END_GCODE: M77\n
+ * NOTES for users having a filament sensor connected to the mainboard:
+ *   1) Enable the start/end gcode.
+ *   2) Add the following commands to the start/end gcode:
+ *      - PRINT_START_GCODE: M75\n
+ *      - PRINT_END_GCODE: M77\n
  *
  *   Value range: [min: 3, max: 75 characters]
  */
@@ -560,8 +569,15 @@
 
 /**
  * Screenshot For Documentation
- * Long press touch screen capture the current full screen to SD card
- * Only for documentation purposes, DON'T enable it for normal printing.
+ * A press on touch screen or on encoder button will take and save a full screen screenshot to SD card.
+ * Only for documentation purposes. DON'T enable it for normal printing.
+ *
+ * For TFTLCD with an encoder "LCD_ENCODER_SUPPORT":
+ * - A press on touch screen to trigger a screenshot in Marlin mode
+ * - A press on encoder button to trigger a screenshot in Touch mode
+ *
+ * For TFTLCD with no encoder:
+ * - A long press of 1.5 seconds on touch screen to trigger a screenshot
  */
 //#define SCREEN_SHOT_TO_SD  // Default: commented (disabled)
 

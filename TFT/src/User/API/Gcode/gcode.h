@@ -24,14 +24,15 @@ typedef struct
   bool inWaitResponse;     // true if waiting for start magic
   bool done;               // true if command is executed and response is received
   bool inError;            // true if error response
+  bool inJson;             // true if !inResponse and !inWaitResponse and '{' is found
 } REQUEST_COMMAND_INFO;
 
 extern REQUEST_COMMAND_INFO requestCommandInfo;
 
 bool isWaitingResponse(void);  // condition callback for loopProcessToCondition()
-
-void clearRequestCommandInfo(void);
 bool requestCommandInfoIsRunning(void);
+void clearRequestCommandInfo(void);
+
 bool request_M21(void);
 char *request_M20(void);
 char *request_M33(char *filename);
