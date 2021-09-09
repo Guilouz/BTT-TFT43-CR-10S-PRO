@@ -116,24 +116,66 @@ Pour éditer le fichier **config.ini** suivez les instructions [ici](config_inst
 
 ## Menus
 
-|                    Écran d'état DÉSACTIVÉ                    |                    Écran d'état ACTIVÉ                     |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![status screen 0](https://user-images.githubusercontent.com/54359396/103319145-09035b80-4a31-11eb-91d0-dd761a48b6f5.png) | ![Unified Material Main Screen](https://user-images.githubusercontent.com/54359396/98742038-03cd4d00-23ae-11eb-9552-36dc02fe66f4.png) |
-| Dans le fichier config.ini définir : General Settings<br/>Enable Status Screen<br/># Select the Main Screen flavour<br/># Options: [Enable: 1, Disable: 0]<br/>**status_screen: 0** | Dans le fichier config.ini définir : General Settings<br/>Enable Status Screen<br/># Select the Main Screen flavour<br/># Options: [Enable: 1, Disable: 0]<br/>**status_screen: 1** |
+<table>
+  <tr>
+    <td align="center"><b>Écran d'état DÉSACTIVÉ</b></td>
+    <td align="center"><b>Écran d'état ACTIVÉ</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://user-images.githubusercontent.com/54359396/103319145-09035b80-4a31-11eb-91d0-dd761a48b6f5.png" alt="status screen 0" width ="390" height="260"></td>
+   <td align="center"><img src="https://user-images.githubusercontent.com/54359396/98742038-03cd4d00-23ae-11eb-9552-36dc02fe66f4.png" alt="status screen 1" width ="390" height="260"></td>
+  </tr>
+  <tr>
+    <td align="center">Dans le fichier config.ini définir dans<br><i># UI Settings / #### Status Screen</i><br/><b>status_screen:0</b></td>
+    <td align="center">Dans le fichier config.ini définir dans<br><i># UI Settings / #### Status Screen</i><br/><b>status_screen:1</b></td>
+  </tr>
+</table>
 
 <br />
 
 ## Thèmes
 
-|                      Unified Material (thème par défaut)                      | The Round Miracle par **[Acenotass](https://github.com/Acenotass)** |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![Unified Material](https://user-images.githubusercontent.com/54359396/98742038-03cd4d00-23ae-11eb-9552-36dc02fe66f4.png) | ![The Round Miracle](https://user-images.githubusercontent.com/54359396/99251566-d77e5a00-280d-11eb-9c7a-0e7c0111eedd.png) |
-| Remplacez le dossier 'TFT43' par celui-ci : [TFT43_Unified_Material.zip](https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/6949569/TFT43_Unified_Material.zip) | Remplacez le dossier 'TFT43' par celui-ci : [TFT43_The_Round_Miracle.zip](https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/6949570/TFT43_The_Round_Miracle.zip) |
+<table>
+  <tr>
+    <td align="center"><b>Unified Material (thème par défaut)</b></td>
+    <td align="center"><b>The Round Miracle par <a href="https://github.com/Acenotass">Acenotass</a></b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://user-images.githubusercontent.com/54359396/98742038-03cd4d00-23ae-11eb-9552-36dc02fe66f4.png" alt="Unified Material" width ="390" height="260"></td>
+   <td align="center"><img src="https://user-images.githubusercontent.com/54359396/99251566-d77e5a00-280d-11eb-9c7a-0e7c0111eedd.png" alt="The Round Miracle" width ="390" height="260"></td>
+  </tr>
+  <tr>
+    <td align="center">Remplacez le dossier 'TFT43' par celui-ci :<br><a href="https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/7134815/TFT43_Unified_Material.zip">TFT43_Unified_Material.zip</a></td>
+    <td align="center">Remplacez le dossier 'TFT43' par celui-ci :<br><a href="https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/7134817/TFT43_The_Round_Miracle.zip">TFT43_The_Round_Miracle.zip</a></td>
+  </tr>
+</table>
 
-| Hybrid Red Material par **[AntoszHUN](https://github.com/AntoszHUN)** | Hybrid Mono Material par **[bepstein111](https://github.com/bepstein111)** |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![Hybrid Red Material](https://user-images.githubusercontent.com/54359396/98869176-a995c000-2471-11eb-94da-a0bc41abf3e9.png) | ![Hybrid Mono Material](https://user-images.githubusercontent.com/54359396/110254523-d5dccb80-7f8f-11eb-86a5-2d52ecd7ca4d.png) |
-| Remplacez le dossier 'TFT43' par celui-ci : [TFT43_Hybrid_Red_Material.zip](https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/6949571/TFT43_Hybrid_Red_Material.zip) | Remplacez le dossier 'TFT43' par celui-ci : [TFT43_Hybrid_Mono_Material.zip](https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/6949572/TFT43_Hybrid_Mono_Material.zip) |
+<table>
+  <tr>
+    <td align="center"><b>Hybrid Red Material par <a href="https://github.com/AntoszHUN">AntoszHUN</a></b></b></td>
+    <td align="center"><b>Hybrid Mono Material par <a href="https://github.com/bepstein111">bepstein111</a></b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://user-images.githubusercontent.com/54359396/98869176-a995c000-2471-11eb-94da-a0bc41abf3e9.png" alt="Hybrid Red Material"   width ="390" height="260"></td>
+   <td align="center"><img src="https://user-images.githubusercontent.com/54359396/110254523-d5dccb80-7f8f-11eb-86a5-2d52ecd7ca4d.png" alt="Hybrid Mono Material" width ="390" height="260"></td>
+  </tr>
+  <tr>
+    <td align="center">Remplacez le dossier 'TFT43' par celui-ci :<br><a href="https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/7134820/TFT43_Hybrid_Red_Material.zip">TFT43_Hybrid_Red_Material.zip</a></td>
+    <td align="center">Remplacez le dossier 'TFT43' par celui-ci :<br><a href="https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/7134824/TFT43_Hybrid_Mono_Material.zip">TFT43_Hybrid_Mono_Material.zip</a></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Rep Rap Firmware Dark par <a href="https://github.com/xPew">xPew</a></b></b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://user-images.githubusercontent.com/54359396/132403911-067d5cba-942e-496a-9f24-c4b1c9be99d5.png" alt="Rep Rap Firmware Dark"  width ="390" height="260"></td>
+  </tr>
+  <tr>
+    <td align="center">Remplacez le dossier 'TFT43' par celui-ci :<br><a href="https://github.com/Guilouz/BTT-TFT43-CR-10S-PRO/files/7134826/TFT43_Rep_Rap_Firmware_Dark.zip">TFT43_Rep_Rap_Firmware_Dark.zip</a></td>
+  </tr>
+</table>
 
 <br />
 
