@@ -7,9 +7,11 @@ Si vous aimez mon travail, n'hésitez pas à me soutenir en me payant une 🍺 o
 
 **Firmware pour écran BigTreeTech TFT43 3.0 configuré pour Creality CR-10S Pro.**
 
-Le firmware Marlin 2.0.9.2 pour Creality CR-10S Pro configuré pour cet écran se trouve [ici](https://bit.ly/38l7FTH).
+Le firmware Marlin pour Creality CR-10S Pro configuré pour cet écran se trouve [ici](https://bit.ly/38l7FTH).
 
 <img width=600 src="https://user-images.githubusercontent.com/12702322/115151934-61597a00-a06f-11eb-89db-372e3d1e4647.jpg" />
+
+![BTT TFT43 V3 0-PIN](https://user-images.githubusercontent.com/12702322/145123745-f79b9b42-62cf-4ec1-905c-7415431c4887.jpg)
   
 <br />
   
