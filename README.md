@@ -10,8 +10,6 @@ Si vous aimez mon travail, n'hésitez pas à me soutenir en me payant une 🍺 o
 Le firmware Marlin pour Creality CR-10S Pro configuré pour cet écran se trouve [ici](https://bit.ly/38l7FTH).
 
 <img width=600 src="https://user-images.githubusercontent.com/12702322/115151934-61597a00-a06f-11eb-89db-372e3d1e4647.jpg" />
-
-![BTT TFT43 V3 0-PIN](https://user-images.githubusercontent.com/12702322/145123745-f79b9b42-62cf-4ec1-905c-7415431c4887.jpg)
   
 <br />
   
@@ -20,6 +18,8 @@ Le firmware Marlin pour Creality CR-10S Pro configuré pour cet écran se trouve
 <img width=700 src="https://user-images.githubusercontent.com/12702322/115152362-10e31c00-a071-11eb-80db-e5554de2c958.png" />
 
 **Note : Le mode "Marlin" n'est pas disponible sur la Creality CR-10S Pro en raison des limitations de la carte mère.** 
+
+![BTT TFT43 V3 0-PIN](https://user-images.githubusercontent.com/12702322/145123745-f79b9b42-62cf-4ec1-905c-7415431c4887.jpg)
 
 <br />
 
