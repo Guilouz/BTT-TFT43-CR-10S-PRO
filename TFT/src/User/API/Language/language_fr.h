@@ -4,6 +4,7 @@
     // config.ini Parameter Settings - Screen Settings and Feature Settings
     #define STRING_EMULATED_M600          "Emuler M600"
     #define STRING_EMULATED_M109_M190     "Emuler M109 / M190"
+    #define STRING_EVENT_LED              "LED Neopixel"
     #define STRING_FILE_COMMENT_PARSING   "Analyse commentaires Gcode"
     #define STRING_ROTATED_UI             "Rotation"
     #define STRING_LANGUAGE               "Français"
