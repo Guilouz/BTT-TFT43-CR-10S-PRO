@@ -36,6 +36,7 @@
     #define STRING_LCD_IDLE_BRIGHTNESS    "Diminution luminosité"
     #define STRING_LCD_IDLE_TIME          "Durée avant diminution"
     #define STRING_LCD_LOCK_ON_IDLE       "Bloquer touches en veille"
+    #define STRING_LED_ALWAYS_ON          "LED toujours allumées"
     #define STRING_KNOB_LED_COLOR         "LED du bouton rotatif"
     #define STRING_KNOB_LED_IDLE          "Veille du bouton rotatif"
     #define STRING_START_GCODE_ENABLED    "Gcode avant l'impression"
@@ -160,17 +161,19 @@
     #define STRING_PROCESS_COMPLETED      "Processus terminé !"
     #define STRING_PROCESS_ABORTED        "Processus annulé !"
 
-    // TFT SD, U_DISK, Onboard SD, Filament Runout Process Commands / Status / Info
+    // TFT SD, USB Disk, Onboard SD, Filament Runout Process Commands / Status / Info
     #define STRING_TFTSD                  "SD TFT"
-    #define STRING_READ_TFTSD_ERROR       "Erreur de lecture de la carte SD TFT !"
+    #define STRING_READ_TFTSD_ERROR       "Erreur de lecture de la carte SD !"
     #define STRING_TFTSD_INSERTED         "Carte insérée !"
     #define STRING_TFTSD_REMOVED          "Carte retirée !"
-    #define STRING_U_DISK                 "Clé USB"
-    #define STRING_READ_U_DISK_ERROR      "Erreur de lecture de la clé USB !"
-    #define STRING_U_DISK_INSERTED        "Clé USB insérée !"
-    #define STRING_U_DISK_REMOVED         "Clé USB retirée !"
-    #define STRING_ONBOARDSD              "SD interne"
-    #define STRING_READ_ONBOARDSD_ERROR   "Erreur de lecture de la carte SD interne !"
+    #define STRING_TFTSD_NOT_DETECTED     "Aucune carte SD détectée."
+    #define STRING_USB_DISK               "USB TFT"
+    #define STRING_READ_USB_DISK_ERROR    "Erreur de lecture de la clé USB !"
+    #define STRING_USB_DISK_INSERTED      "Clé USB insérée !"
+    #define STRING_USB_DISK_REMOVED       "Clé USB retirée !"
+    #define STRING_USB_DISK_NOT_DETECTED  "Aucune clé USB détectée."
+    #define STRING_ONBOARDSD              "Port CM"
+    #define STRING_READ_ONBOARDSD_ERROR   "Erreur de lecture du port de la carte mère !"
     #define STRING_FILAMENT_RUNOUT        "Fin de Filament !"
 
     // Steppers, Print, Probe Process Commands / Status / Info

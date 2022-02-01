@@ -59,7 +59,6 @@ void commonStoreCmd(GCODE_QUEUE * pQueue, const char * format, va_list va)
 // Store gcode cmd to infoCmd queue.
 // This command will be sent to the printer by sendQueueCmd().
 // If the infoCmd queue is full, a reminder message is displayed and the command is discarded.
-// Do not send multiple commands at once !!! (ex "M220\nM221\n")
 bool storeCmd(const char * format, ...)
 {
   if (strlen(format) == 0) return false;
@@ -78,12 +77,66 @@ bool storeCmd(const char * format, ...)
   return true;
 }
 
+// Parse and store gcode command script to infoCmd queue.
+// This command script will be sent to the printer by sendQueueCmd().
+// If the infoCmd queue has not enough empty room, a reminder message is displayed and the script is discarded.
+// No partial/incomplete commands (not terminated with '\n') are allowed in the script, they will be ignored.
+bool storeCmdScript(const char * format, ...)
+{
+  if (strlen(format) == 0) return false;
+
+  if (infoCmd.count >= CMD_QUEUE_SIZE)  // command queue is full
+  {
+    reminderMessage(LABEL_BUSY, STATUS_BUSY);
+    return false;
+  }
+
+  char script[256];
+  va_list va;
+  va_start(va, format);
+  vsnprintf(script, 256, format, va);
+  va_end(va);  
+
+  // commented for speed increase, not needed for the moment
+  // if (script[strlen(script) - 1] != '\n')  // partial command detected
+  //   return false;
+
+  uint8_t index = 0;  // used as index and flag
+  uint8_t initialCmd_count = infoCmd.count;
+  char * pChr_tmp = script;
+
+  while (pChr_tmp[0] != '\0')  // try to fill the command queue with individual commands
+  {
+    infoCmd.queue[infoCmd.index_w].gcode[index] = pChr_tmp[0];
+
+    if (pChr_tmp[0] == '\n')
+    {
+      infoCmd.queue[infoCmd.index_w].gcode[++index] = '\0';
+      infoCmd.queue[infoCmd.index_w].port_index = PORT_1;  // port index for SERIAL_PORT
+      infoCmd.index_w = (infoCmd.index_w + 1) % CMD_QUEUE_SIZE;
+      infoCmd.count++;
+      if ((infoCmd.count == CMD_QUEUE_SIZE) && (pChr_tmp[1] != '\0'))  // command queue is full and there are commands left
+      { // roll back changes and exit with "false"
+        reminderMessage(LABEL_BUSY, STATUS_BUSY);
+        infoCmd.index_w = (CMD_QUEUE_SIZE + infoCmd.index_w + infoCmd.count - initialCmd_count) % CMD_QUEUE_SIZE;
+        infoCmd.count = initialCmd_count;
+        return false;
+      }
+      index = 0;
+    }
+    else
+      index += (index == CMD_MAX_SIZE - 2) ? 0 : 1;  // "- 2" space for "\n" and "\0"
+
+    pChr_tmp++;
+  }
+
+  return true;
+}
+
 // Store gcode cmd to infoCmd queue.
 // This command will be sent to the printer by sendQueueCmd().
-// If the infoCmd queue is full, a reminder message is displayed and it will wait the queue
-// is available to store the command.
-// Do not send multiple commands at once !!! (ex "M220\nM221\n")
-// For multiple commands at once use mustStoreScript()
+// If the infoCmd queue is full, a reminder message is displayed
+// and it will for wait the queue to be able to store the command.
 void mustStoreCmd(const char * format, ...)
 {
   if (strlen(format) == 0) return;
@@ -197,12 +250,6 @@ static inline bool getCmd(void)
   cmd_port_index = infoCmd.queue[infoCmd.index_r].port_index;  // index of serial port originating the gcode
 
   return (cmd_port_index == PORT_1);  // if gcode is originated by TFT (SERIAL_PORT), return true
-}
-
-void updateCmd(const char * buf)
-{
-  strcat(cmd_ptr, buf);       // append buf to gcode
-  cmd_len = strlen(cmd_ptr);  // new length of gcode
 }
 
 // Send gcode cmd to printer and remove leading gcode cmd from infoCmd queue.
@@ -343,7 +390,7 @@ void sendQueueCmd(void)
                 if (cmd_start_with(cmd_ptr, "M20 SD:"))
                   infoFile.source = TFT_SD;
                 else
-                  infoFile.source = TFT_UDISK;
+                  infoFile.source = TFT_USB_DISK;
 
                 strncpy(infoFile.title, &cmd_ptr[cmd_index + 4], MAX_PATH_LEN);
                 // strip out any checksum that might be in the string
@@ -386,7 +433,7 @@ void sendQueueCmd(void)
                 if (cmd_start_with(cmd_ptr, "M23 SD:"))
                   infoFile.source = TFT_SD;
                 else
-                  infoFile.source = TFT_UDISK;
+                  infoFile.source = TFT_USB_DISK;
 
                 resetInfoFile();
                 strncpy(infoFile.title, &cmd_ptr[cmd_index + 4], MAX_PATH_LEN);
@@ -432,7 +479,7 @@ void sendQueueCmd(void)
           case 24:  // M24
             if (!fromTFT)
             {
-              if ((infoFile.source == TFT_UDISK) || (infoFile.source == TFT_SD))  // if a file was selected from TFT with M23
+              if ((infoFile.source == TFT_USB_DISK) || (infoFile.source == TFT_SD))  // if a file was selected from TFT with M23
               {
                 // firstly purge the gcode to avoid a possible reprocessing or infinite nested loop in
                 // case the function loopProcess() is invoked by the following function printPause()
@@ -525,7 +572,7 @@ void sendQueueCmd(void)
                 if (cmd_start_with(cmd_ptr, "M30 SD:"))
                   infoFile.source = TFT_SD;
                 else
-                  infoFile.source = TFT_UDISK;
+                  infoFile.source = TFT_USB_DISK;
                 TCHAR filepath[MAX_PATH_LEN];
                 strncpy(filepath, &cmd_ptr[cmd_index + 4], MAX_PATH_LEN);
                 // strip out any checksum that might be in the string
@@ -692,12 +739,6 @@ void sendQueueCmd(void)
             {
               heatSyncUpdateSeconds(cmd_value());
             }
-            else if (!cmd_seen('\n'))
-            {
-              char buf[12];
-              sprintf(buf, "S%u\n", heatGetUpdateSeconds());
-              updateCmd(buf);
-            }
           }
           break;
 
@@ -741,12 +782,6 @@ void sendQueueCmd(void)
             if (cmd_seen('S'))
             {
               heatSyncTargetTemp(i, cmd_value());
-            }
-            else if (!cmd_seen('\n'))
-            {
-              char buf[12];
-              sprintf(buf, "S%u\n", heatGetTargetTemp(i));
-              updateCmd(buf);
               heatSetSendWaiting(i, false);
             }
           }
@@ -812,12 +847,6 @@ void sendQueueCmd(void)
             if (cmd_seen('S'))
             {
               heatSyncTargetTemp(BED, cmd_value());
-            }
-            else if (!cmd_seen('\n'))
-            {
-              char buf[12];
-              sprintf(buf, "S%u\n", heatGetTargetTemp(BED));
-              updateCmd(buf);
               heatSetSendWaiting(BED, false);
             }
           }
@@ -844,12 +873,6 @@ void sendQueueCmd(void)
             if (cmd_seen('S'))
             {
               heatSyncTargetTemp(CHAMBER, cmd_value());
-            }
-            else if (!cmd_seen('\n'))
-            {
-              char buf[12];
-              sprintf(buf, "S%u\n", heatGetTargetTemp(CHAMBER));
-              updateCmd(buf);
               heatSetSendWaiting(CHAMBER, false);
             }
           }
