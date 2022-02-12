@@ -5,9 +5,9 @@ Si vous aimez mon travail, n'hésitez pas à me soutenir en me payant une 🍺 o
 
 <br />
 
-<img width=600 src="https://user-images.githubusercontent.com/12702322/115151934-61597a00-a06f-11eb-89db-372e3d1e4647.jpg" />
+**Firmware pour écran BigTreeTech TFT43 3.0 configuré pour Creality CR-10S Pro.**
 
-**Firmware pour écran BigTreeTech TFT43 3.0 configuré pour Creality CR-10S Pro.**<br />
+<img width=600 src="https://user-images.githubusercontent.com/12702322/115151934-61597a00-a06f-11eb-89db-372e3d1e4647.jpg" />
 
 ## Téléchargement
 
