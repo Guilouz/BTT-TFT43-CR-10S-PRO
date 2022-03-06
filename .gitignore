@@ -1,33 +1,9 @@
 #
-# Marlin 3D Printer Firmware
-# Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
-#
-# Based on Sprinter and grbl.
-# Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#
-
-# Our automatic versioning scheme generates the following file
-# NEVER put it in the repository
-_Version.h
-
-#
 # OS
 #
 applet/
 *.DS_Store
+desktop.ini
 
 #
 # Misc
@@ -37,7 +13,6 @@ applet/
 *.rej
 *.bak
 *.idea
-*.s
 *.i
 *.ii
 *.swp
@@ -76,6 +51,7 @@ tags
 *.exe
 *.out
 *.app
+
 
 #
 # C
@@ -120,74 +96,26 @@ tags
 .piolibdeps
 .clang_complete
 .gcc-flags.json
-/lib/
-
-# Workaround for Deviot+platformio quirks
-Marlin/lib
-Marlin/platformio.ini
-Marlin/*/platformio.ini
-Marlin/*/*/platformio.ini
-Marlin/*/*/*/platformio.ini
-Marlin/*/*/*/*/platformio.ini
-Marlin/.travis.yml
-Marlin/*/.travis.yml
-Marlin/*/*/.travis.yml
-Marlin/*/*/*/.travis.yml
-Marlin/*/*/*/*/.travis.yml
-Marlin/.gitignore
-Marlin/*/.gitignore
-Marlin/*/*/.gitignore
-Marlin/*/*/*/.gitignore
-Marlin/*/*/*/*/.gitignore
-Marlin/readme.txt
-Marlin/*/readme.txt
-Marlin/*/*/readme.txt
-Marlin/*/*/*/readme.txt
-Marlin/*/*/*/*/readme.txt
-
-# Secure Credentials
-Configuration_Secure.h
-
-# Visual Studio
-*.sln
-*.vcxproj
-*.vcxproj.user
-*.vcxproj.filters
-Release/
-Debug/
-__vm/
-.vs/
-vc-fileutils.settings
 
 # Visual Studio Code
 .vscode
 .vscode/.browse.c_cpp.db*
 .vscode/c_cpp_properties.json
 .vscode/launch.json
+.vscode/ipch
 .vscode/*.db
 
-# cmake
+#cmake
 CMakeLists.txt
 src/CMakeLists.txt
 CMakeListsPrivate.txt
 
-# CLion
+#CLion
 cmake-build-*
 
-# Eclipse
+#Eclipse
 .project
 .cproject
 .pydevproject
 .settings
 .classpath
-
-# Python
-__pycache__
-
-# IOLogger logs
-*_log.csv
-
-# Simulation / Native
-eeprom.dat
-imgui.ini
-.DS_Store
