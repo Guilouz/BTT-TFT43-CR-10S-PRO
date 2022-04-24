@@ -21,9 +21,9 @@
   #endif
 #endif
 
-// Root folder for fonts and icons
-#ifndef ROOT_DIR
-  #define ROOT_DIR "TFT35"
+// Update folder for fonts and icons
+#ifndef UPDATE_DIR
+  #define UPDATE_DIR "TFT35"
 #endif
 
 // Hardware manufacturer
@@ -55,9 +55,9 @@
 #define W25Qxx_CS_PIN PB6
 
 // LCD interface
-// Supported LCD drivers: [ST7789, SSD1963, RM68042, NT35310, ILI9488, ILI9341, ILI9325, HX8558]
+// Supported LCD drivers: [ST7789, SSD1963, RM68042, NT35310, ILI9488, ILI9341, ILI9325, HX8558, ST7796S]
 #ifndef TFTLCD_DRIVER
-  #define TFTLCD_DRIVER       (ILI9488 | NT35310)
+  #define TFTLCD_DRIVER       (ILI9488 | NT35310 | ST7796S)
   #define TFTLCD_DRIVER_SPEED 0x03
 #endif
 
@@ -72,7 +72,7 @@
 #endif
 
 // SERIAL_PORT:   communicating with host (Marlin, RRF etc...)
-// SERIAL_PORT_X: communicating with other controllers (Octoprint, ESP3D, other UART Touch Screen etc...)
+// SERIAL_PORT_X: communicating with other controllers (OctoPrint, ESP3D, other UART Touch Screen etc...)
 #ifndef SERIAL_PORT
   #define SERIAL_PORT   _USART2  // default USART port
   #define SERIAL_PORT_2 _USART1
@@ -88,10 +88,10 @@
 // SD Card SPI pins
 #ifndef SD_SPI_SUPPORT
   #define SD_SPI_SUPPORT
-  #define SD_LOW_SPEED  7      // 2^(SPEED+1) = 256 frequency division
-  #define SD_HIGH_SPEED 0      // 2 frequency division
-  #define SD_SPI        _SPI1
-  #define SD_CS_PIN     PA4
+  #define SD_LOW_SPEED   7      // 2^(SPEED+1) = 256 frequency division
+  #define SD_HIGH_SPEED  0      // 2 frequency division
+  #define SD_SPI         _SPI1
+  #define SD_CS_PIN      PA4
 #endif
 
 // SD Card CD Detect pin

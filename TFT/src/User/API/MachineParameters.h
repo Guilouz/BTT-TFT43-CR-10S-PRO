@@ -27,6 +27,7 @@ typedef enum
   P_STEALTH_CHOP,
   P_DELTA_CONFIGURATION,
   P_DELTA_TOWER_ANGLE,
+  P_DELTA_DIAGONAL_ROD,
   P_DELTA_ENDSTOP,
   P_PROBE_OFFSET,
   P_LIN_ADV,
@@ -64,6 +65,8 @@ typedef enum
   STEPPER_INDEX_Y2,
   STEPPER_INDEX_Z,
   STEPPER_INDEX_Z2,
+  STEPPER_INDEX_Z3,
+  STEPPER_INDEX_Z4,
   STEPPER_INDEX_E0,
   STEPPER_INDEX_E1,
   STEPPER_INDEX_COUNT
@@ -95,6 +98,7 @@ typedef struct
   float StealthChop[STEPPER_INDEX_COUNT];
   float DeltaConfiguration[4];
   float DeltaTowerAngle[3];
+  float DeltaDiagonalRod[3];
   float DeltaEndstop[3];
   float ProbeOffset[AXIS_INDEX_COUNT - 2];
   float LinAdvance[2];
@@ -116,6 +120,7 @@ extern char * const ablStateDisplayID[];
 extern char * const stealthChopDisplayID[];
 extern char * const deltaConfigurationDisplayID[];
 extern char * const deltaTowerAngleDisplayID[];
+extern char * const deltaDiagonalRodDisplayID[];
 extern char * const deltaEndstopDisplayID[];
 extern char * const linAdvDisplayID[];
 

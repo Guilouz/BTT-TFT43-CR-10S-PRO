@@ -2,12 +2,12 @@
 #define _LANGUAGE_PL_H_
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
+    #define STRING_LANGUAGE               "Polski"
     #define STRING_EMULATED_M600          "Emulowane M600"
     #define STRING_EMULATED_M109_M190     "Emulowane M109 / M190"
     #define STRING_EVENT_LED              "Event LED"
     #define STRING_FILE_COMMENT_PARSING   "File comment parsing"
     #define STRING_ROTATED_UI             "Obrót"
-    #define STRING_LANGUAGE               "Polski"
     #define STRING_ACK_NOTIFICATION       "Styl powiadom. ACK"
     #define STRING_FILES_SORT_BY          "Sortuj pliki według"
     #define STRING_FILES_LIST_MODE        "Tryb listy plików"
@@ -59,6 +59,7 @@
     #define STRING_STEALTH_CHOP           "TMC StealthChop"
     #define STRING_DELTA_CONFIGURATION    "Konfiguracja delta"
     #define STRING_DELTA_TOWER_ANGLE      "Trymowanie kąta wieży"
+    #define STRING_DELTA_DIAGONAL_ROD     "Diagonal Rod Trim"
     #define STRING_DELTA_ENDSTOP          "Regulacje krańców"
     #define STRING_PROBE_OFFSET           "Przesunięcie sondy"
     #define STRING_LIN_ADVANCE            "Linear Advance"
@@ -161,19 +162,20 @@
     #define STRING_PROCESS_COMPLETED      "Zakończono przetwarzanie!"
     #define STRING_PROCESS_ABORTED        "Przerwano przetwarzanie!"
 
-    // TFT SD, USB Disk, Onboard SD, Filament Runout Process Commands / Status / Info
-    #define STRING_TFTSD                  "SD TFT"
-    #define STRING_READ_TFTSD_ERROR       "Błąd odczytu karty SD wyświetlacza!"
-    #define STRING_TFTSD_INSERTED         "Karta włożona!"
-    #define STRING_TFTSD_REMOVED          "Karta wyjęta!"
-    #define STRING_TFTSD_NOT_DETECTED     "No SD Card detected."
-    #define STRING_USB_DISK               "USB TFT"
-    #define STRING_READ_USB_DISK_ERROR   "Błąd odczytu dysku USB!"
-    #define STRING_USB_DISK_INSERTED      "Dysk USB włożony!"
-    #define STRING_USB_DISK_REMOVED       "Dysk USB wyjęty!"
-    #define STRING_USB_DISK_NOT_DETECTED  "No USB Disk detected."
-    #define STRING_ONBOARDSD              "SD"
-    #define STRING_READ_ONBOARDSD_ERROR   "Błąd odczytu karty SD!"
+    // TFT Media, Onboard Media, Filament Runout Process Commands / Status / Info
+    #define STRING_TFT_SD                 "SD TFT"
+    #define STRING_TFT_SD_READ_ERROR      "Błąd odczytu karty SD wyświetlacza!"
+    #define STRING_TFT_SD_INSERTED        "Karta włożona!"
+    #define STRING_TFT_SD_REMOVED         "Karta wyjęta!"
+    #define STRING_TFT_SD_NOT_DETECTED    "No SD Card detected."
+    #define STRING_TFT_USB                "USB TFT"
+    #define STRING_TFT_USB_READ_ERROR     "Błąd odczytu dysku USB!"
+    #define STRING_TFT_USB_INSERTED       "Dysk USB włożony!"
+    #define STRING_TFT_USB_REMOVED        "Dysk USB wyjęty!"
+    #define STRING_TFT_USB_NOT_DETECTED   "No USB Disk detected."
+    #define STRING_ONBOARD_SD             "OnboardSD"
+    #define STRING_ONBOARD_USB            "OnboardUSB"
+    #define STRING_ONBOARD_SD_READ_ERROR  "Błąd odczytu karta!"
     #define STRING_FILAMENT_RUNOUT        "Skończył się filament!"
 
     // Steppers, Print, Probe Process Commands / Status / Info
@@ -189,6 +191,8 @@
     #define STRING_DEPLOY                 "Rozlokuj"
     #define STRING_STOW                   "Schowaj"
     #define STRING_REPEAT                 "Powtórz"
+    #define STRING_HS_ON                  "HS: On"
+    #define STRING_HS_OFF                 "HS: Off"
 
     // Printer Tools
     #define STRING_NOZZLE                 "Dysza"

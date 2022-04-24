@@ -2,12 +2,12 @@
 #define _LANGUAGE_NL_H_
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
+    #define STRING_LANGUAGE               "Dutch"
     #define STRING_EMULATED_M600          "Emulated M600"
     #define STRING_EMULATED_M109_M190     "Emulated M109 / M190"
     #define STRING_EVENT_LED              "Event LED"
     #define STRING_FILE_COMMENT_PARSING   "File comment parsing"
     #define STRING_ROTATED_UI             "Draai UI"
-    #define STRING_LANGUAGE               "Dutch"
     #define STRING_ACK_NOTIFICATION       "ACK notification style"
     #define STRING_FILES_SORT_BY          "Sort files by"
     #define STRING_FILES_LIST_MODE        "Files viewer List Mode"
@@ -59,6 +59,7 @@
     #define STRING_STEALTH_CHOP           "TMC StealthChop"
     #define STRING_DELTA_CONFIGURATION    "Delta Configuration"
     #define STRING_DELTA_TOWER_ANGLE      "Tower Angle Trim"
+    #define STRING_DELTA_DIAGONAL_ROD     "Diagonal Rod Trim"
     #define STRING_DELTA_ENDSTOP          "Endstop Adjustments"
     #define STRING_PROBE_OFFSET           "Probe Offset"
     #define STRING_LIN_ADVANCE            "Linear Advance"
@@ -161,19 +162,20 @@
     #define STRING_PROCESS_COMPLETED      "Process voltooid!"
     #define STRING_PROCESS_ABORTED        "Process geannuleerd!"
 
-    // TFT SD, USB Disk, Onboard SD, Filament Runout Process Commands / Status / Info
-    #define STRING_TFTSD                  "TFT SD"
-    #define STRING_READ_TFTSD_ERROR       "TFT SD leesfout!"
-    #define STRING_TFTSD_INSERTED         "Kaart geplaatst!"
-    #define STRING_TFTSD_REMOVED          "Kaart verwijdert!"
-    #define STRING_TFTSD_NOT_DETECTED     "No SD Card detected."
-    #define STRING_USB_DISK               "U Disk"
-    #define STRING_READ_USB_DISK_ERROR   "U Disk Leesfout!"
-    #define STRING_USB_DISK_INSERTED      "U Disk geplaatst!"
-    #define STRING_USB_DISK_REMOVED       "U Disk verwijdert!"
-    #define STRING_USB_DISK_NOT_DETECTED  "No USB Disk detected."
-    #define STRING_ONBOARDSD              "OnboardSD"
-    #define STRING_READ_ONBOARDSD_ERROR   "Onboard SD-kaart leesfout!"
+    // TFT Media, Onboard Media, Filament Runout Process Commands / Status / Info
+    #define STRING_TFT_SD                 "TFT SD"
+    #define STRING_TFT_SD_READ_ERROR      "TFT SD leesfout!"
+    #define STRING_TFT_SD_INSERTED        "Kaart geplaatst!"
+    #define STRING_TFT_SD_REMOVED         "Kaart verwijdert!"
+    #define STRING_TFT_SD_NOT_DETECTED    "No SD Card detected."
+    #define STRING_TFT_USB                "U Disk"
+    #define STRING_TFT_USB_READ_ERROR     "U Disk Leesfout!"
+    #define STRING_TFT_USB_INSERTED       "U Disk geplaatst!"
+    #define STRING_TFT_USB_REMOVED        "U Disk verwijdert!"
+    #define STRING_TFT_USB_NOT_DETECTED   "No USB Disk detected."
+    #define STRING_ONBOARD_SD             "OnboardSD"
+    #define STRING_ONBOARD_USB            "OnboardUSB"
+    #define STRING_ONBOARD_SD_READ_ERROR  "Onboard media leesfout!"
     #define STRING_FILAMENT_RUNOUT        "filament op!"
 
     // Steppers, Print, Probe Process Commands / Status / Info
@@ -189,6 +191,8 @@
     #define STRING_DEPLOY                 "Gebruiken"
     #define STRING_STOW                   "Inzetten"
     #define STRING_REPEAT                 "Herhaal"
+    #define STRING_HS_ON                  "HS: On"
+    #define STRING_HS_OFF                 "HS: Off"
 
     // Printer Tools
     #define STRING_NOZZLE                 "Spuitneus"

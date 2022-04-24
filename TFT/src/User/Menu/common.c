@@ -13,7 +13,7 @@ uint8_t currentFan = 0;
 uint8_t currentSpeedID = 0;
 static uint32_t lastTime = 0;
 
-//Icons list for tool change
+// Icons list for tool change
 const ITEM itemTool[MAX_HEATER_COUNT] =
 {
 // icon                          label
@@ -351,7 +351,9 @@ NOZZLE_STATUS warmupNozzle(uint8_t toolIndex, void (* callback)(void))
   return HEATED;
 }
 
-// user choice for disabling all heaters/hotends
+#ifdef SAFETY_ALERT
+
+// User choice for disabling all heaters/hotends
 void cooldownTemperature(void)
 {
   if (!isPrinting())
@@ -367,3 +369,5 @@ void cooldownTemperature(void)
     }
   }
 }
+
+#endif  // SAFETY_ALERT

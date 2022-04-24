@@ -2,12 +2,12 @@
 #define _LANGUAGE_BR_H_
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
+    #define STRING_LANGUAGE               "Português BRASIL"
     #define STRING_EMULATED_M600          "M600 emulado"
     #define STRING_EMULATED_M109_M190     "M109 / M190 emulado"
     #define STRING_EVENT_LED              "Event LED"
     #define STRING_FILE_COMMENT_PARSING   "Análise de comentários em arquivos"
     #define STRING_ROTATED_UI             "Girar"
-    #define STRING_LANGUAGE               "Português BRASIL"
     #define STRING_ACK_NOTIFICATION       "Tipo de pop-up"
     #define STRING_FILES_SORT_BY          "Lista arqui. por"
     #define STRING_FILES_LIST_MODE        "Arquivo em modo de lista"
@@ -59,6 +59,7 @@
     #define STRING_STEALTH_CHOP           "TMC StealthChop"
     #define STRING_DELTA_CONFIGURATION    "Configuração Delta"
     #define STRING_DELTA_TOWER_ANGLE      "Guarnição do ângulo da torre" //
+    #define STRING_DELTA_DIAGONAL_ROD     "Diagonal Rod Trim"
     #define STRING_DELTA_ENDSTOP          "Ajustes de fim de curso"
     #define STRING_PROBE_OFFSET           "OFFSET da Sonda"
     #define STRING_LIN_ADVANCE            "Avanço linear"
@@ -161,19 +162,20 @@
     #define STRING_PROCESS_COMPLETED      "Processo concluído!"
     #define STRING_PROCESS_ABORTED        "Processo cancelado!"
 
-    // TFT SD, USB Disk, Onboard SD, Filament Runout Process Commands / Status / Info
-    #define STRING_TFTSD                  "SD TFT"
-    #define STRING_READ_TFTSD_ERROR       "Erro de leitura do SD!"
-    #define STRING_TFTSD_INSERTED         "SD inserido"
-    #define STRING_TFTSD_REMOVED          "SD removido"
-    #define STRING_TFTSD_NOT_DETECTED     "SD não detectado"
-    #define STRING_USB_DISK               "Pen drive"
-    #define STRING_READ_USB_DISK_ERROR   "Erro de leitura do Pen Drive"
-    #define STRING_USB_DISK_INSERTED      "Pen Drive inserido!"
-    #define STRING_USB_DISK_REMOVED       "Pen Drive removido!"
-    #define STRING_USB_DISK_NOT_DETECTED  "No USB Disk detected."
-    #define STRING_ONBOARDSD              "SD ONBOARD"
-    #define STRING_READ_ONBOARDSD_ERROR   "Erro de leitura do SD ONBOARD!"
+    // TFT Media, Onboard Media, Filament Runout Process Commands / Status / Info
+    #define STRING_TFT_SD                 "SD TFT"
+    #define STRING_TFT_SD_READ_ERROR      "Erro de leitura do SD!"
+    #define STRING_TFT_SD_INSERTED        "SD inserido"
+    #define STRING_TFT_SD_REMOVED         "SD removido"
+    #define STRING_TFT_SD_NOT_DETECTED    "SD não detectado"
+    #define STRING_TFT_USB                "Pen drive"
+    #define STRING_TFT_USB_READ_ERROR     "Erro de leitura do Pen Drive"
+    #define STRING_TFT_USB_INSERTED       "Pen Drive inserido!"
+    #define STRING_TFT_USB_REMOVED        "Pen Drive removido!"
+    #define STRING_TFT_USB_NOT_DETECTED   "USB Disk não detectado"
+    #define STRING_ONBOARD_SD             "SD ONBOARD"
+    #define STRING_ONBOARD_USB            "USB ONBOARD"
+    #define STRING_ONBOARD_SD_READ_ERROR  "Erro de leitura do onboard media!"
     #define STRING_FILAMENT_RUNOUT        "Filamento acabou!"
 
     // Steppers, Print, Probe Process Commands / Status / Info
@@ -189,6 +191,8 @@
     #define STRING_DEPLOY                 "Lança"
     #define STRING_STOW                   "Retrai"
     #define STRING_REPEAT                 "Repete"
+    #define STRING_HS_ON                  "HS: On"
+    #define STRING_HS_OFF                 "HS: Off"
 
     // Printer Tools
     #define STRING_NOZZLE                 "Hotend"

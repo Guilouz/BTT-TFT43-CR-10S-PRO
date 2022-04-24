@@ -18,9 +18,9 @@
   #endif
 #endif
 
-// Root folder for fonts and icons
-#ifndef ROOT_DIR
-  #define ROOT_DIR "TFT24"
+// Update folder for fonts and icons
+#ifndef UPDATE_DIR
+  #define UPDATE_DIR "TFT24"
 #endif
 
 // Hardware manufacturer
@@ -74,7 +74,7 @@
 #endif
 
 // SERIAL_PORT:   communicating with host (Marlin, RRF etc...)
-// SERIAL_PORT_X: communicating with other controllers (Octoprint, ESP3D, other UART Touch Screen etc...)
+// SERIAL_PORT_X: communicating with other controllers (OctoPrint, ESP3D, other UART Touch Screen etc...)
 #ifndef SERIAL_PORT
   #define SERIAL_PORT   _USART1  // default USART port
   //#define SERIAL_PORT_2 _USART2
@@ -90,10 +90,10 @@
 // SD Card SPI pins
 #ifndef SD_SPI_SUPPORT
   #define SD_SPI_SUPPORT
-  #define SD_LOW_SPEED  7      // 2^(SPEED+1) = 256 frequency division
-  #define SD_HIGH_SPEED 1      // 2 frequency division
-  #define SD_SPI        _SPI1
-  #define SD_CS_PIN     PA4
+  #define SD_LOW_SPEED   7      // 2^(SPEED+1) = 256 frequency division
+  #define SD_HIGH_SPEED  1      // 4 frequency division
+  #define SD_SPI         _SPI1
+  #define SD_CS_PIN      PA4
 #endif
 
 // SD Card CD Detect pin

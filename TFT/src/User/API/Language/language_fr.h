@@ -2,12 +2,12 @@
 #define _LANGUAGE_FR_H_
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
+    #define STRING_LANGUAGE               "Français"
     #define STRING_EMULATED_M600          "Emuler M600"
     #define STRING_EMULATED_M109_M190     "Emuler M109 / M190"
     #define STRING_EVENT_LED              "LED Neopixel"
     #define STRING_FILE_COMMENT_PARSING   "Analyse commentaires Gcode"
     #define STRING_ROTATED_UI             "Rotation"
-    #define STRING_LANGUAGE               "Français"
     #define STRING_ACK_NOTIFICATION       "Style de notification ACK"
     #define STRING_FILES_SORT_BY          "Trier les fichiers par"
     #define STRING_FILES_LIST_MODE        "Fichiers en mode liste"
@@ -59,6 +59,7 @@
     #define STRING_STEALTH_CHOP           "StealthChop TMC"
     #define STRING_DELTA_CONFIGURATION    "Réglages Delta"
     #define STRING_DELTA_TOWER_ANGLE      "Corrections d'angle des tours"
+    #define STRING_DELTA_DIAGONAL_ROD     "Ajustements Diagonal Rod"
     #define STRING_DELTA_ENDSTOP          "Ajustements Endstop"
     #define STRING_PROBE_OFFSET           "Décalage palpeur"
     #define STRING_LIN_ADVANCE            "Linear Advance"
@@ -172,7 +173,8 @@
     #define STRING_USB_DISK_INSERTED      "Clé USB insérée !"
     #define STRING_USB_DISK_REMOVED       "Clé USB retirée !"
     #define STRING_USB_DISK_NOT_DETECTED  "Aucune clé USB détectée."
-    #define STRING_ONBOARDSD              "Port CM"
+    #define STRING_ONBOARDSD              "microSD CM"
+    #define STRING_ONBOARDUSB             "USB CM"
     #define STRING_READ_ONBOARDSD_ERROR   "Erreur de lecture du port de la carte mère !"
     #define STRING_FILAMENT_RUNOUT        "Fin de Filament !"
 
@@ -189,6 +191,8 @@
     #define STRING_DEPLOY                 "Déployer"
     #define STRING_STOW                   "Rentrer"
     #define STRING_REPEAT                 "Répéter"
+    #define STRING_HS_ON                  "HS: On"
+    #define STRING_HS_OFF                 "HS: Off"
 
     // Printer Tools
     #define STRING_NOZZLE                 "Buse"

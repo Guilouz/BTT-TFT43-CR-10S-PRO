@@ -2,12 +2,12 @@
 #define _LANGUAGE_SL_H_
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
+    #define STRING_LANGUAGE               "Slovenski"
     #define STRING_EMULATED_M600          "Emulated M600"
     #define STRING_EMULATED_M109_M190     "Emulated M109 / M190"
     #define STRING_EVENT_LED              "Event LED"
     #define STRING_FILE_COMMENT_PARSING   "File comment parsing"
     #define STRING_ROTATED_UI             "Obrni UI"
-    #define STRING_LANGUAGE               "Slovenski"
     #define STRING_ACK_NOTIFICATION       "ACK notification style"
     #define STRING_FILES_SORT_BY          "Sort files by"
     #define STRING_FILES_LIST_MODE        "Prikaz datotek v seznamu"
@@ -59,6 +59,7 @@
     #define STRING_STEALTH_CHOP           "TMC StealthChop"
     #define STRING_DELTA_CONFIGURATION    "Delta Configuration"
     #define STRING_DELTA_TOWER_ANGLE      "Tower Angle Trim"
+    #define STRING_DELTA_DIAGONAL_ROD     "Diagonal Rod Trim"
     #define STRING_DELTA_ENDSTOP          "Endstop Adjustments"
     #define STRING_PROBE_OFFSET           "Odmik sonde"
     #define STRING_LIN_ADVANCE            "Linear Advance"
@@ -161,19 +162,20 @@
     #define STRING_PROCESS_COMPLETED      "Process completed!"
     #define STRING_PROCESS_ABORTED        "Process aborted!"
 
-    // TFT SD, USB Disk, Onboard SD, Filament Runout Process Commands / Status / Info
-    #define STRING_TFTSD                  "TFT SD"
-    #define STRING_READ_TFTSD_ERROR       "Napaka branja TFT SD kartice!"
-    #define STRING_TFTSD_INSERTED         "Kartica vstavljena!"
-    #define STRING_TFTSD_REMOVED          "Kartica odstranjena!"
-    #define STRING_TFTSD_NOT_DETECTED     "No SD Card detected."
-    #define STRING_USB_DISK               "USB disk"
-    #define STRING_READ_USB_DISK_ERROR   "Napaka branja USB diska!"
-    #define STRING_USB_DISK_INSERTED      "USB disk vstavljen!"
-    #define STRING_USB_DISK_REMOVED       "USB disk odstranjen!"
-    #define STRING_USB_DISK_NOT_DETECTED  "No USB Disk detected."
-    #define STRING_ONBOARDSD              "SKR SD"
-    #define STRING_READ_ONBOARDSD_ERROR   "Napaka branja SKR SD kartice!"
+    // TFT Media, Onboard Media, Filament Runout Process Commands / Status / Info
+    #define STRING_TFT_SD                 "TFT SD"
+    #define STRING_TFT_SD_READ_ERROR      "Napaka branja TFT SD kartice!"
+    #define STRING_TFT_SD_INSERTED        "Kartica vstavljena!"
+    #define STRING_TFT_SD_REMOVED         "Kartica odstranjena!"
+    #define STRING_TFT_SD_NOT_DETECTED    "No SD Card detected."
+    #define STRING_TFT_USB                "USB disk"
+    #define STRING_TFT_USB_READ_ERROR     "Napaka branja USB diska!"
+    #define STRING_TFT_USB_INSERTED       "USB disk vstavljen!"
+    #define STRING_TFT_USB_REMOVED        "USB disk odstranjen!"
+    #define STRING_TFT_USB_NOT_DETECTED   "No USB Disk detected."
+    #define STRING_ONBOARD_SD             "SKR SD"
+    #define STRING_ONBOARD_USB            "SKR USB"
+    #define STRING_ONBOARD_SD_READ_ERROR  "Napaka branja SKR media!"
     #define STRING_FILAMENT_RUNOUT        "Ni več filamenta!"
 
     // Steppers, Print, Probe Process Commands / Status / Info
@@ -189,6 +191,8 @@
     #define STRING_DEPLOY                 "Postavi"
     #define STRING_STOW                   "Skrij"
     #define STRING_REPEAT                 "Ponovi"
+    #define STRING_HS_ON                  "HS: On"
+    #define STRING_HS_OFF                 "HS: Off"
 
     // Printer Tools
     #define STRING_NOZZLE                 "Šoba"

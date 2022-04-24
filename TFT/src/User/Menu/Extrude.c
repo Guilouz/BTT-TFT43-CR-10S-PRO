@@ -15,7 +15,6 @@ void extrusionMinTemp_OK(void)
 
 void menuExtrude(void)
 {
-  // 1 title, ITEM_PER_PAGE items (icon + label)
   MENUITEMS extrudeItems = {
     // title
     LABEL_EXTRUDE,
@@ -40,13 +39,13 @@ void menuExtrude(void)
   {
     loopProcessToCondition(&isNotEmptyCmdQueue);  // wait for the communication to be clean
 
-    eAxisBackup.coordinate = ((infoFile.source >= BOARD_SD) ? coordinateGetAxisActual(E_AXIS) : coordinateGetAxisTarget(E_AXIS));
+    eAxisBackup.coordinate = coordinateGetAxis(E_AXIS);
     eAxisBackup.feedrate = coordinateGetFeedRate();
     eAxisBackup.relative = eGetRelative();
     eAxisBackup.handled = true;
   }
 
-  extrKnownCoord = extrNewCoord = ((infoFile.source >= BOARD_SD) ? coordinateGetAxisActual(E_AXIS) : coordinateGetAxisTarget(E_AXIS));
+  extrKnownCoord = extrNewCoord = coordinateGetAxis(E_AXIS);
 
   if (eAxisBackup.relative) // Set extruder to absolute
     mustStoreCmd("M82\n");
@@ -94,7 +93,7 @@ void menuExtrude(void)
         }
         else
         {
-          heatSetCurrentIndex(currentTool);  // preselect current nozzle for "Heat" menu
+          heatSetCurrentIndex(curExtruder_index);  // preselect current nozzle for "Heat" menu
           OPEN_MENU(menuHeat);
           eAxisBackup.handled = false;  // exiting from Extrude menu (user might never come back by "Back" long press in Heat menu)
         }
@@ -115,7 +114,7 @@ void menuExtrude(void)
         break;
 
       case KEY_ICON_7:
-        cooldownTemperature();
+        COOLDOWN_TEMPERATURE();
         CLOSE_MENU();
         eAxisBackup.handled = false;  // exiting from Extrude menu, no need for it anymore
         break;

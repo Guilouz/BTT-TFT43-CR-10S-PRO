@@ -27,6 +27,7 @@ void addToast(DIALOG_TYPE style, char * text)
   TOAST t;
   strncpy(t.text, text, TOAST_MSG_LENGTH);
   t.text[TOAST_MSG_LENGTH - 1] = 0;  // ensure string ends with null terminator
+  t.style = style;
   t.isNew = true;
   toastlist[nextToastIndex] = t;
   nextToastIndex = (nextToastIndex + 1) % TOAST_MSG_COUNT;
@@ -101,7 +102,7 @@ void drawToast(bool redraw)
 
     // set new timer if notification is new
     if (!redraw)
-      nextToastTime = OS_GetTimeMs() + TOAST_DURATION;
+      nextToastTime = OS_GetTimeMs() + SEC_TO_MS(TOAST_DURATION);
 
     GUI_RestoreColorDefault();
   }
@@ -124,7 +125,7 @@ void loopToast(void)
       _toastRunning = false;
       GUI_ClearPrect(&toastIconRect);
       GUI_ClearPrect(&toastRect);
-      menuReDrawCurTitle();
+      menuDrawTitle();
     }
   }
 }

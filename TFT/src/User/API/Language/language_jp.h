@@ -2,12 +2,12 @@
 #define _LANGUAGE_JP_H_
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
+    #define STRING_LANGUAGE               "日本語"
     #define STRING_EMULATED_M600          "Emulated M600"
     #define STRING_EMULATED_M109_M190     "Emulated M109 / M190"
     #define STRING_EVENT_LED              "Event LED"
     #define STRING_FILE_COMMENT_PARSING   "File comment parsing"
     #define STRING_ROTATED_UI             "回転UI"
-    #define STRING_LANGUAGE               "日本語"
     #define STRING_ACK_NOTIFICATION       "ACK notification style"
     #define STRING_FILES_SORT_BY          "Sort files by"
     #define STRING_FILES_LIST_MODE        "ファイルビューアリストモード"
@@ -59,6 +59,7 @@
     #define STRING_STEALTH_CHOP           "TMC StealthChop"
     #define STRING_DELTA_CONFIGURATION    "Delta Configuration"
     #define STRING_DELTA_TOWER_ANGLE      "Tower Angle Trim"
+    #define STRING_DELTA_DIAGONAL_ROD     "Diagonal Rod Trim"
     #define STRING_DELTA_ENDSTOP          "Endstop Adjustments"
     #define STRING_PROBE_OFFSET           "プローブオフセット"
     #define STRING_LIN_ADVANCE            "Linear Advance"
@@ -153,7 +154,7 @@
     #define STRING_INFO                   "情報"
     #define STRING_INVALID_VALUE          "Invalid value(s)"
     #define STRING_TIMEOUT_REACHED        "Timeout reached!"
-    #define STRING_DISCONNECT_INFO        "SDカード　PC両用"
+    #define STRING_DISCONNECT_INFO        "SDカード PC両用"
     #define STRING_SHUTTING_DOWN          "シャットダウン..."
     #define STRING_WAIT_TEMP_SHUT_DOWN    "ホットエンドの温度が%d℃未満になるまで待ちます。" // Wait for the temperature of hotend to be lower than 50℃
     #define STRING_POWER_FAILED           "プリントを継続しますか?"
@@ -161,19 +162,20 @@
     #define STRING_PROCESS_COMPLETED      "Process completed!"
     #define STRING_PROCESS_ABORTED        "Process aborted!"
 
-    // TFT SD, USB Disk, Onboard SD, Filament Runout Process Commands / Status / Info
-    #define STRING_TFTSD                  "TFT SD"
-    #define STRING_READ_TFTSD_ERROR       "TFT SDカードの読み取りがエラー発生しました!"
-    #define STRING_TFTSD_INSERTED         "SDカード入りました!"
-    #define STRING_TFTSD_REMOVED          "SDカード出しました!"
-    #define STRING_TFTSD_NOT_DETECTED     "No SD Card detected."
-    #define STRING_USB_DISK               "USBメモリー"
-    #define STRING_READ_USB_DISK_ERROR   "USBメモリー読み込みエラー!"
-    #define STRING_USB_DISK_INSERTED      "U Diskカード入りました!"
-    #define STRING_USB_DISK_REMOVED       "U Diskカード出しました!"
-    #define STRING_USB_DISK_NOT_DETECTED  "No USB Disk detected."
-    #define STRING_ONBOARDSD              "内部 mSDカード"
-    #define STRING_READ_ONBOARDSD_ERROR   "内部 mSDカードの読み取りがエラー発生しました!"
+    // TFT Media, Onboard Media, Filament Runout Process Commands / Status / Info
+    #define STRING_TFT_SD                 "TFT SD"
+    #define STRING_TFT_SD_READ_ERROR      "TFT SDカードの読み取りがエラー発生しました!"
+    #define STRING_TFT_SD_INSERTED        "SDカード入りました!"
+    #define STRING_TFT_SD_REMOVED         "SDカード出しました!"
+    #define STRING_TFT_SD_NOT_DETECTED    "No SD Card detected."
+    #define STRING_TFT_USB                "USBメモリー"
+    #define STRING_TFT_USB_READ_ERROR     "USBメモリー読み込みエラー!"
+    #define STRING_TFT_USB_INSERTED       "U Diskカード入りました!"
+    #define STRING_TFT_USB_REMOVED        "U Diskカード出しました!"
+    #define STRING_TFT_USB_NOT_DETECTED   "No USB Disk detected."
+    #define STRING_ONBOARD_SD             "内部 mSDカード"
+    #define STRING_ONBOARD_USB            "OnboardUSB"
+    #define STRING_ONBOARD_SD_READ_ERROR  "内部 mSDカードの読み取りがエラー発生しました!"
     #define STRING_FILAMENT_RUNOUT        "フィラメントランアウト!"
 
     // Steppers, Print, Probe Process Commands / Status / Info
@@ -189,6 +191,8 @@
     #define STRING_DEPLOY                 "展開"
     #define STRING_STOW                   "収納"
     #define STRING_REPEAT                 "繰り返す"
+    #define STRING_HS_ON                  "HS: On"
+    #define STRING_HS_OFF                 "HS: Off"
 
     // Printer Tools
     #define STRING_NOZZLE                 "ノズル"

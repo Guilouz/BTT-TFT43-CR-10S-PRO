@@ -470,7 +470,7 @@ static inline void menuKeyboardView(void)
       case GKEY_SEND:
         if (nowIndex)
         {
-          gcodeBuf[nowIndex++] = '\n';  // end char '\n' for Gcode
+          gcodeBuf[nowIndex++] = '\n';  // end char '\n' for gcode
           gcodeBuf[nowIndex] = 0;
           storeCmd(gcodeBuf);
           gcodeBuf[nowIndex = 0] = 0;
@@ -540,9 +540,6 @@ static inline void saveGcodeTerminalCache(const char * str, uint16_t strLen)
 
 void terminalCache(const char * stream, uint16_t streamLen, SERIAL_PORT_INDEX portIndex, TERMINAL_SRC src)
 {
-  if (MENU_IS_NOT(menuTerminal))
-    return;
-
   char * srcId[SRC_TERMINAL_COUNT] = {"\5", "\6"};
 
   // copy string source identifier
@@ -830,7 +827,7 @@ void menuTerminalWindow(void)
           terminalData->pageTable[terminalData->pageTail] = terminalBuf + bufIndex;
 
           // move to next first page if we reached the maximun page count
-          if (terminalData->pageTail == 0 && (terminalData->pageCount + 1) == terminalData->maxPageCount)
+          if (terminalData->pageTail == terminalData->pageHead && (terminalData->pageCount + 1) == terminalData->maxPageCount)
             terminalData->pageHead = (terminalData->pageHead + 1) % terminalData->maxPageCount;
 
           terminalUpdatePageCount();  // update page count
@@ -881,7 +878,7 @@ void menuTerminal(void)
 {
   TERMINAL_DATA termPage = {{terminalBuf}, MAX_PAGE_COUNT, 0, 0, 0, 0, TERMINAL_MAX_CHAR, 0, SRC_TERMINAL_COUNT};
 
-  if (isPrinting() || infoHost.printing)  // display only 1 page if printing
+  if (isPrinting() || isHostPrinting())  // display only 1 page if printing
   {
     termPage.bufSize = (LCD_WIDTH / BYTE_WIDTH * LCD_HEIGHT / BYTE_HEIGHT);
     termPage.maxPageCount = 1;

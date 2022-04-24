@@ -188,7 +188,7 @@ void ParseACKJsonParser::value(const char *value)
       strcpy(m291_title, value);
       break;
     case mbox_timeo:
-      m291_timeo = strtod((char *)value, NULL) * 1000;
+      m291_timeo = SEC_TO_MS(strtod((char *)value, NULL));
       break;
     case resp:
       if (strstr(value, (char *)"Steps/"))       //parse M92
@@ -235,7 +235,7 @@ void ParseACKJsonParser::value(const char *value)
     case result:
         if (starting_print)
         {
-          printRemoteStart(value);
+          startRemotePrint(value);  // start print and open Printing menu
           starting_print = false;
         }
       break;
