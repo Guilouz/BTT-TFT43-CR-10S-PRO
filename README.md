@@ -205,10 +205,15 @@ Cela signifie que seul Octoprint contrôlera l'impression et ce n'est qu'à la f
 
 Ces commandes peuvent être enregistrées dans les paramètres Octoprint section Script GCode.
 
-Pour obtenir les informations (pourcentage, temps écoulé et temps restant) sur l'écran il est nécessaire d'utiliser l'extension de post-traitement `Display Progress on LCD` sous Cura avec cette configuration :
+Pour obtenir les informations (pourcentage, temps écoulé, temps restant et nombre de couches) sur l'écran il est nécessaire d'utiliser l'extension de post-traitement Cura `BigTreeTech Remote Printing` disponible ici [BigTreeTech Remote Printing Cura Plugin.zip](https://github.com/Guilouz/BTT-TFT70-SuperRacer/files/8535623/BigTreeTech.Remote.Printing.Cura.Plugin.zip) avec cette configuration :
 
-![Capture d’écran 2021-12-04 à 12 37 24](https://user-images.githubusercontent.com/12702322/144708703-b4a2927f-dac1-49f3-8277-8218b3151bc4.jpg)
+![Capture d’écran 2022-04-22 à 01 06 31](https://user-images.githubusercontent.com/12702322/164565636-ac8964bc-620b-43ad-990b-4f2b6b76805e.jpg)
 
+**Sous Windows :** Copiez le fichier `BigTreeTechRemotePrinting.py` dans le répertoire <br />
+`C:\Program Files\Ultimaker Cura x.xx.x\plugins\PostProcessingPlugin\scripts`
+
+**Sous MacOS :** Copiez le fichier `BigTreeTechRemotePrinting.py` dans le répertoire <br />
+`/Applications/Ultimaker Cura.app/Contents/Resources/plugins/plugins/PostProcessingPlugin/scripts`
 
 <br />
 
