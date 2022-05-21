@@ -16,6 +16,11 @@ Si vous aimez mon travail, n'hésitez pas à me soutenir en me payant une 🍺 o
 Le firmware Marlin pour Creality CR-10S Pro configuré pour cet écran se trouve [ici](https://bit.ly/38l7FTH).
   
 <br />
+
+## Support
+
+Support disponible sur le serveur Discord de JSTECH à cette adresse : https://discord.gg/NS4zYd23dX
+
   
 ## Connection de l'écran à la carte mère
 
