@@ -74,7 +74,7 @@ void menuHeat(void)
 
       case KEY_ICON_3:
       case KEY_INCREASE:
-        setTarget += degreeSteps[degreeSteps_index];
+          setTarget += degreeSteps[degreeSteps_index];
         break;
 
       case KEY_ICON_4:

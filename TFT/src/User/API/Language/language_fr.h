@@ -1,4 +1,4 @@
-#ifndef _LANGUAGE_FR_H_
+ifndef _LANGUAGE_FR_H_
 #define _LANGUAGE_FR_H_
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
@@ -73,13 +73,13 @@
     #define STRING_RETRACT_ACCELERATION   "Rétraction"
     #define STRING_TRAVEL_ACCELERATION    "Déplacements"
     #define STRING_RETRACT_LENGTH         "Longueur"
-    #define STRING_RETRACT_SWAP_LENGTH    "Longueur de retrait"
-    #define STRING_RETRACT_FEEDRATE       "Vitesse"
+    #define STRING_RETRACT_SWAP_LENGTH    "Longueur (multi-extrudeurs)"
+    #define STRING_RETRACT_FEEDRATE       "Vitesse (mm/min)"
     #define STRING_RETRACT_Z_LIFT         "Décalage en Z"
-    #define STRING_RECOVER_LENGTH         "Longueur"
-    #define STRING_SWAP_RECOVER_LENGTH    "Longueur de retrait"
-    #define STRING_RECOVER_FEEDRATE       "Vitesse"
-    #define STRING_SWAP_RECOVER_FEEDRATE  "Vitesse de retrait"
+    #define STRING_RECOVER_LENGTH         "Longueur supplémentaire"
+    #define STRING_SWAP_RECOVER_LENGTH    "Longueur (multi-extrudeurs)"
+    #define STRING_RECOVER_FEEDRATE       "Vitesse (mm/min)"
+    #define STRING_SWAP_RECOVER_FEEDRATE  "Vitesse (multi-extrudeurs)"
 
     // Save / Load
     #define STRING_SAVE                   "Sauver"
@@ -191,8 +191,8 @@
     #define STRING_DEPLOY                 "Déployer"
     #define STRING_STOW                   "Rentrer"
     #define STRING_REPEAT                 "Répéter"
-    #define STRING_HS_ON                  "HS: On"
-    #define STRING_HS_OFF                 "HS: Off"
+    #define STRING_HS_ON                  "HS On"
+    #define STRING_HS_OFF                 "HS Off"
 
     // Printer Tools
     #define STRING_NOZZLE                 "Buse"

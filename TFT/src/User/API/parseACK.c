@@ -563,7 +563,7 @@ void parseACK(void)
       {
         heatSetCurrentTemp(NOZZLE0, ack_value() + 0.5f);
         heatSetTargetTemp(NOZZLE0, ack_second_value() + 0.5f, FROM_HOST);
-    
+
         for (uint8_t i = 1; i < MAX_HEATER_COUNT; i++)
         {
           if (!heaterDisplayIsValid(i))
