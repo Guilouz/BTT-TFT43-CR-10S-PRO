@@ -1,4 +1,4 @@
-ifndef _LANGUAGE_FR_H_
+#ifndef _LANGUAGE_FR_H_
 #define _LANGUAGE_FR_H_
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
@@ -56,6 +56,8 @@ ifndef _LANGUAGE_FR_H_
     #define STRING_FWRECOVER              "Récupération firmware"
     #define STRING_RETRACT_AUTO           "Rétraction firmware auto"
     #define STRING_HOTEND_OFFSET          "Décalage 2ème buse"
+    #define STRING_HOTEND_PID             "PID Buse"
+    #define STRING_BED_PID                "PID Plateau"
     #define STRING_STEALTH_CHOP           "StealthChop TMC"
     #define STRING_DELTA_CONFIGURATION    "Réglages Delta"
     #define STRING_DELTA_TOWER_ANGLE      "Corrections d'angle des tours"
@@ -331,11 +333,11 @@ ifndef _LANGUAGE_FR_H_
     #define STRING_MAINMENU               "Menu"
     #define STRING_LEVELING_EDGE_DISTANCE "Distance au bord du plateau"
     #define STRING_TUNING                 "Tuning"
+    #define STRING_MPC                    "MPC"
+    #define STRING_MPC_TITLE              "Autotune MPC"
     #define STRING_PID                    "PID"
     #define STRING_PID_TITLE              "Autocalibrage PID"
-    #define STRING_PID_START_INFO         "L'autocalibrage PID va être lancé. Cela peut prendre quelques minutes.\nContinuer ?"
-    #define STRING_PID_START_INFO_2       "Autocalibrage PID en cours !"
-    #define STRING_PID_START_INFO_3       "Ne touchez pas l'écran avant la fin (LED verte allumée) !"
+    #define STRING_TUNE_START_INFO        "L'autocalibrage peut prendre un certain temps.\nContinuer ?"
     #define STRING_TUNE_EXTRUDER          "Extrudeur"
     #define STRING_TUNE_EXT_EXTRUDE_100   "Ext. 100mm"
     #define STRING_TUNE_EXT_TEMP          "Réglage de l'extrudeur"
